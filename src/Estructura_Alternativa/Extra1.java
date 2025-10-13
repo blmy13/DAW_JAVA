@@ -27,27 +27,27 @@ public class Extra1 {
             if (recu && nota >= 4) {
                 System.out.println("introdueix la nota de la recuperació");
                 double notaR = tec.nextDouble();
-                if (notaR >= 5){
+                if (notaR >= 5) {
                     resultat = "Aprovat per recuperació.";
                 } else {
                     resultat = "Suspès.";
                 }
-        } else if (nota < 7) {
-            resultat = "Aprovat.";
-        } else if (nota < 9) {
-            resultat = "Notable.";
-        } else {
-            resultat = "Excel·lent.";
-        }
-
-        if (cnegativa) {
-            switch (resultat) {
-                case "Excel·lent." -> resultat = "Notable.";
-                case "Notable." -> resultat = "Aprovat.";
-                case "Aprovat.", "Aprovat per recuperació." -> resultat = "Suspès per conducta negativa.";
+            } else if (nota < 7) {
+                resultat = "Aprovat.";
+            } else if (nota < 9) {
+                resultat = "Notable.";
+            } else {
+                resultat = "Excel·lent.";
             }
-        }
-        System.out.println("El resultat final és: " + resultat);
-    }
 
+            if (cnegativa) {
+                switch (resultat) {
+                    case "Excel·lent." -> resultat = "Notable.";
+                    case "Notable." -> resultat = "Aprovat.";
+                    case "Aprovat.", "Aprovat per recuperació." -> resultat = "Suspès per conducta negativa.";
+                }
+            }
+            System.out.println("El resultat final és: " + resultat);
+        }
+    }
 }
