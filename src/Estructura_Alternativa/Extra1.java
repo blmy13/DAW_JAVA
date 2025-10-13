@@ -20,7 +20,7 @@ public class Extra1 {
 
         if ((cond != 1 && cond != 2) || (rec != 1 && rec != 2)) {
             System.out.println("Has introduït un número incorrecte.");
-            return;
+            
         }
         if (cond == 2) {
             conducta = true;
@@ -42,7 +42,6 @@ public class Extra1 {
         } else {
             switch (nota){
                 case 5, 6:
-                    System.out.println("Aprovat.");
                     if (conducta){
                         System.out.println("Suspès per conducta.");
                     } else {
