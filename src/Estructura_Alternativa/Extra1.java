@@ -17,7 +17,7 @@ public class Extra1 {
         System.out.println("L'alumne ha assistit a recuperació? (true/false)");
         boolean recu = tec.nextBoolean();
 
-        if (nota < 0 || nota > 10){
+        if (nota < 0 || nota > 10) {
             System.out.println("❌ Nota no vàlida.");
         }
 
@@ -29,16 +29,16 @@ public class Extra1 {
             } else {
                 resultat = "Suspès.";
             }
-        } else if (nota < 7){
+        } else if (nota < 7) {
             resultat = "Aprovat.";
-        } else if (nota < 9){
+        } else if (nota < 9) {
             resultat = "Notable.";
         } else {
             resultat = "Excel·lent.";
         }
 
-        if (cnegativa){
-            switch (resultat){
+        if (cnegativa) {
+            switch (resultat) {
                 case "Excel·lent." -> resultat = "Notable.";
                 case "Notable." -> resultat = "Aprovat.";
                 case "Aprovat.", "Aprovat per recuperació." -> resultat = "Suspès per conducta negativa.";
