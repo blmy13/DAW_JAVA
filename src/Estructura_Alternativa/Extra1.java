@@ -5,73 +5,46 @@ import java.util.Scanner;
 public class Extra1 {
 
     public static void main(String[] args) {
-        int nota, notaRecu = 0, cond, rec = 0;
-        boolean conducta, recu;
+
         Scanner tec = new Scanner(System.in);
 
         System.out.println("Introdueix la nota de l'alumne");
-        nota = tec.nextInt();
+        double nota = tec.nextDouble();
 
-        System.out.println("Introdueix un 1 si l'alumne ha tingut una conducta positiva o un 2 si ha tingut conducta negativa.");
-        cond = tec.nextInt();
+        System.out.println("L'alumne ha tingut una conducta negativa? (true/false)");
+        boolean cnegativa = tec.nextBoolean();
 
-        if ((cond != 1 && cond != 2)) {
-            System.out.println("Has introduït un número incorrecte.");
+        System.out.println("L'alumne ha assistit a recuperació? (true/false)");
+        boolean recu = tec.nextBoolean();
 
-        }
-        if (cond == 2) {
-            conducta = true;
-        } else {
-            conducta = false;
+        if (nota < 0 || nota > 10){
+            System.out.println("❌ Nota no vàlida.");
         }
 
-        if (nota < 0 || nota > 10) {
-            System.out.println("La nota no és vàlida");
+        String resultat;
+
+        if (nota < 5) {
+            if (recu && nota >= 4) {
+                resultat = "Aprovat per recuperació.";
+            } else {
+                resultat = "Suspès.";
+            }
+        } else if (nota < 7){
+            resultat = "Aprovat.";
+        } else if (nota < 9){
+            resultat = "Notable.";
         } else {
-            switch (nota) {
-                case 5, 6:
-                    if (conducta) {
-                        System.out.println("Suspès per conducta.");
-                    } else {
-                        System.out.println("Aprovat.");
-                    }
-                    break;
-                case 7, 8:
-                    if (conducta) {
-                        System.out.println("Aprovat.");
-                    } else {
-                        System.out.println("Notable.");
-                    }
-                    break;
-                case 9, 10:
-                    if (conducta) {
-                        System.out.println("Notable");
-                    } else {
-                        System.out.println("Excel·lent.");
-                    }
-                    break;
-                case 0, 1, 2, 3:
-                    System.out.println("Suspès.");
-                    break;
-                case 4:
-                    System.out.println("L'alumne ha assistit a recuperació? Si no és el cas introdueix 1, sinó introdueix 2.");
-                    rec = tec.nextInt();
-                    if (rec == 2) {
-                        recu = true;
-                    } else {
-                        recu = false;
-                    }
+            resultat = "Excel·lent.";
+        }
 
-                    if (recu) {
-                        System.out.println("Introdueix la nota de l'examen de recuperació.");
-                        tec.nextInt();
-                        if (notaRecu >= 4) {
-                            System.out.println("Aprovat per recuperació.");
-                        }
-                    }
-
+        if (cnegativa){
+            switch (resultat){
+                case "Excel·lent." -> resultat = "Notable.";
+                case "Notable." -> resultat = "Aprovat.";
+                case "Aprovat.", "Aprovat per recuperació." -> resultat = "Suspès per conducta negativa.";
             }
         }
+        System.out.println("El resultat final és: " + resultat);
     }
 
 }
