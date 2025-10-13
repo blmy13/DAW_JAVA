@@ -19,16 +19,18 @@ public class Extra1 {
 
         if (nota < 0 || nota > 10) {
             System.out.println("❌ Nota no vàlida.");
-        }
+        } else {
+            String resultat;
 
-        String resultat;
-
-        if (nota < 5) {
-            if (recu && nota >= 4) {
-                System.out.println("introdueix la nota de la recuperació");
-                double notaR = tec.nextDouble();
-                if (notaR >= 5) {
-                    resultat = "Aprovat per recuperació.";
+            if (nota < 5) {
+                if (recu && nota >= 4) {
+                    System.out.println("Introdueix la nota de la recuperació:");
+                    double notaR = tec.nextDouble();
+                    if (notaR >= 5) {
+                        resultat = "Aprovat per recuperació.";
+                    } else {
+                        resultat = "Recuperació suspesa.";
+                    }
                 } else {
                     resultat = "Suspès.";
                 }
@@ -45,9 +47,12 @@ public class Extra1 {
                     case "Excel·lent." -> resultat = "Notable.";
                     case "Notable." -> resultat = "Aprovat.";
                     case "Aprovat.", "Aprovat per recuperació." -> resultat = "Suspès per conducta negativa.";
+                    case "Suspès.", "Recuperació suspesa." -> resultat = "Suspès per conducta negativa.";
                 }
             }
+
             System.out.println("El resultat final és: " + resultat);
         }
+
     }
 }
