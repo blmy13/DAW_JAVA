@@ -25,10 +25,13 @@ public class Extra1 {
 
         if (nota < 5) {
             if (recu && nota >= 4) {
-                resultat = "Aprovat per recuperació.";
-            } else {
-                resultat = "Suspès.";
-            }
+                System.out.println("introdueix la nota de la recuperació");
+                double notaR = tec.nextDouble();
+                if (notaR >= 5){
+                    resultat = "Aprovat per recuperació.";
+                } else {
+                    resultat = "Suspès.";
+                }
         } else if (nota < 7) {
             resultat = "Aprovat.";
         } else if (nota < 9) {
