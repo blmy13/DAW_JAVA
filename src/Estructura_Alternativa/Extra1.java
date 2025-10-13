@@ -47,7 +47,6 @@ public class Extra1 {
                     case "Excel·lent." -> resultat = "Notable.";
                     case "Notable." -> resultat = "Aprovat.";
                     case "Aprovat.", "Aprovat per recuperació." -> resultat = "Suspès per conducta negativa.";
-                    case "Suspès.", "Recuperació suspesa." -> resultat = "Suspès per conducta negativa.";
                 }
             }
 
