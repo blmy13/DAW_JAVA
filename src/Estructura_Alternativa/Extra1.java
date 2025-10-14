@@ -14,8 +14,6 @@ public class Extra1 {
         System.out.println("L'alumne ha tingut una conducta negativa? (true/false)");
         boolean cnegativa = tec.nextBoolean();
 
-        System.out.println("L'alumne ha assistit a recuperació? (true/false)");
-        boolean recu = tec.nextBoolean();
 
         if (nota < 0 || nota > 10) {
             System.out.println("❌ Nota no vàlida.");
@@ -23,6 +21,8 @@ public class Extra1 {
             String resultat;
 
             if (nota < 5) {
+                 System.out.println("L'alumne ha assistit a recuperació? (true/false)");
+                 boolean recu = tec.nextBoolean();
                 if (recu && nota >= 4) {
                     System.out.println("Introdueix la nota de la recuperació:");
                     double notaR = tec.nextDouble();
@@ -44,10 +44,14 @@ public class Extra1 {
 
             if (cnegativa) {
                 switch (resultat) {
-                    case "Excel·lent." -> resultat = "Notable.";
-                    case "Notable." -> resultat = "Aprovat.";
-                    case "Aprovat.", "Aprovat per recuperació." -> resultat = "Suspès per conducta negativa.";
-                    case "Suspès.", "Recuperació suspesa." -> resultat = "Suspès per conducta negativa.";
+                    case "Excel·lent." ->
+                        resultat = "Notable.";
+                    case "Notable." ->
+                        resultat = "Aprovat.";
+                    case "Aprovat.", "Aprovat per recuperació." ->
+                        resultat = "Suspès per conducta negativa.";
+                    case "Suspès.", "Recuperació suspesa." ->
+                        resultat = "Suspès per conducta negativa.";
                 }
             }
 

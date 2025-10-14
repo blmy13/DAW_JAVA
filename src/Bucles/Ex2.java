@@ -7,7 +7,7 @@ public class Ex2 {
     public static void main(String[] args) {
 
         Scanner tec = new Scanner(System.in);
-        int max = 0;
+        int max = Integer.MIN_VALUE;
 
         for (int i = 1; i < 6; i++) {
             System.out.println("Introdueix un número: ");
