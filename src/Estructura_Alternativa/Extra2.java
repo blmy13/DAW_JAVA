@@ -6,7 +6,7 @@ public class Extra2 {
 
     public static void main(String[] args) {
         Scanner tec = new Scanner(System.in);
-        String estacio, zodiac, cuspide;
+        String estacio, zodiac;
         boolean valid = true;
         boolean esCuspide = false;
 
