@@ -31,6 +31,7 @@ public class Extra2 {
                 if (dia > 29) {
                     valid = false;
                 }
+                break;
 
             default:
                 if (dia > 31) {
@@ -75,6 +76,9 @@ public class Extra2 {
             } else {
                 zodiac = "Peixos";
             }
+
+            System.out.println("El teu zodíac és: " + zodiac);
+
             if (mes == 1 && (dia >= 19 && dia <= 21)) {
                 esCuspide = true;
             } else if (mes == 2 && (dia >= 18 && dia <= 20)) {
