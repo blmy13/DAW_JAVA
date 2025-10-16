@@ -18,7 +18,7 @@ public class Figures_For10 {
                     System.out.print(i +" ");
                 }
             }
-            System.out.println();l
+            System.out.println();
         }
     }
 }
