@@ -14,8 +14,6 @@ public class Ex8 {
 
         int numSeguent;
 
-        System.out.print("Parelles: ");
-
         while (num != -1) {
 
             System.out.println("Introdueix un altre número");

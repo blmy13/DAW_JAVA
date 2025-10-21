@@ -14,7 +14,7 @@ public class Ex10 {
 
         boolean parell = true;
 
-        while (num != -1) {
+        while (num != -1 && parell) {
 
 
             if (num % 2 != 0) {
