@@ -12,13 +12,13 @@ public class Ex10 {
         System.out.println("Introdueix un número.");
         int num = tec.nextInt();
 
-        boolean parell = false;
+        boolean parell = true;
 
         while (num != -1) {
 
 
-            if (num % 2 == 0) {
-                parell = true;
+            if (num % 2 != 0) {
+                parell = false;
             }
 
             System.out.println("Introdueix el següent número.");

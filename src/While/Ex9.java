@@ -14,13 +14,13 @@ public class Ex9 {
         System.out.println("Introdueix una nota:");
         double nota = tec.nextDouble();
 
-        while (nota != -1){
+        while (nota != -1 && numSuspes < 4){
             if (nota < 5){
                 numSuspes++;
             }
             System.out.println("Introdueix la següent nota:");
             nota = tec.nextDouble();
         }
-        System.out.println(numSuspes >= 3 ? "El nombre de suspesos és: " + numSuspes : "No hi ha més de tres suspesos. N'hi ha: " + numSuspes);
+        System.out.println(numSuspes == 3 ? "Hi ha 3 suspesos" : "No hi ha més de tres suspesos. N'hi ha: " + numSuspes);
     }
 }

@@ -4,6 +4,7 @@ package While;
 capacitat del camió i el pes dels sacs, indicant si ha de carregar el sac o enviar-lo
 al seu destí i començar a carregar un altre. El procés continua fins que s'hagin
 omplert els 20 camions.*/
+
 import java.util.Scanner;
 
 public class Ex11 {
