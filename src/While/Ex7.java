@@ -28,5 +28,6 @@ public class Ex7 {
         }
 
         String resultat = primer ? "El número que has introduït és primer." : "El número que has introduït no és primer.";
+        System.out.println(resultat);
     }
 }
