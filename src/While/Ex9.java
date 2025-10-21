@@ -6,6 +6,7 @@ package While;
 import java.util.Scanner;
 
 public class Ex9 {
+
     public static void main(String[] args) {
 
         Scanner tec = new Scanner(System.in);
@@ -14,12 +15,16 @@ public class Ex9 {
         System.out.println("Introdueix una nota:");
         double nota = tec.nextDouble();
 
-        while (nota != -1 && numSuspes < 4){
-            if (nota < 5){
+        while (nota != -1 && numSuspes < 3) {
+            
+            if (nota < 5) {
                 numSuspes++;
             }
-            System.out.println("Introdueix la següent nota:");
-            nota = tec.nextDouble();
+            if (numSuspes < 3) {
+                System.out.println("Introdueix la següent nota:");
+                nota = tec.nextDouble();
+            }
+            
         }
         System.out.println(numSuspes == 3 ? "Hi ha 3 suspesos" : "No hi ha més de tres suspesos. N'hi ha: " + numSuspes);
     }
