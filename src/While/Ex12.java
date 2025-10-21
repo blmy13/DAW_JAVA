@@ -1,6 +1,7 @@
 package While;
 
-//programa que llegeixi un número i indiqui si tots els dígits són parells.
+//Programa que llegeixi un número i indiqui si tots els dígits són parells.
+
 import java.util.Scanner;
 
 public class Ex12 {
