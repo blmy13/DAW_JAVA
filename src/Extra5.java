@@ -18,7 +18,7 @@ public class Extra5 {
         int sumaDiv = 0;
         int divInicial = 1;
         
-        while (divInicial >= num / 2){
+        while (divInicial <= num / 2){
             
             if (divInicial % 2 == 0) {
                 sumaDiv += divInicial;              
