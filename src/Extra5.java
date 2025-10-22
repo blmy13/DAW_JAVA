@@ -20,7 +20,7 @@ public class Extra5 {
         
         while (divInicial <= num / 2){
             
-            if (divInicial % 2 == 0) {
+            if (num % divInicial == 0) {
                 sumaDiv += divInicial;              
                 
             }
