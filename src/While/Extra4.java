@@ -1,4 +1,4 @@
-/*
+package While;/*
 Calculeu aproximadament l’arrel quadrada d’un número real positiu r seguint el
 mètode de Newton.
  */

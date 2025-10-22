@@ -1,4 +1,4 @@
-/*
+package While;/*
 Per trobar el màxim comú divisor (mcd) de dos números s’utilitza l’algorisme
 d’Euclides. Donat dos números enters a i b, es mira quin és el més gran. Si el més
 gran és a, es substitueix per a - b; si el més gran és b es substitueix per b – a , i així
