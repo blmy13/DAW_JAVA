@@ -17,25 +17,35 @@ public class Extra6 {
         Scanner tec = new Scanner(System.in);
 
         int num = 0;
-        int sumaDiv = 0;
         int contPerf = 0, contAbu = 0, contDef = 0;
-        int divInicial = 1;
+        int numActual = 1;
+        System.out.println("Introdueix el rang.");
+        num = tec.nextInt();
 
-        while (num != -1) {
-            System.out.println("Introdueix un número.");
-            num = tec.nextInt();
-            while (divInicial <= num / 2) {
-                if (num % divInicial == 0) {
-                    sumaDiv += divInicial;
-                }
-                divInicial++;
-            }
-            if (sumaDiv == num) {
-                contPerf++;
-            } else if (sumaDiv > num) {
-                contAbu++;
+        while (numActual <= num) {
+
+            int sumaDiv = 0;
+
+            if (num == 1) {
+                sumaDiv = 0;
+
             } else {
-                contDef++;
+
+                int divisor = 1;
+                while (divisor <= numActual / 2) {
+                    if (numActual % divisor == 0) {
+                        sumaDiv += divisor;
+                    }
+                    divisor++;
+                }
+                if (sumaDiv == numActual) {
+                    contPerf++;
+                } else if (sumaDiv > numActual) {
+                    contAbu++;
+                } else {
+                    contDef++;
+                }
+                numActual++;
             }
         }
         System.out.println("Hi ha " + contPerf + " números perfectes.");
