@@ -16,11 +16,10 @@ public class Extra6 {
 
         Scanner tec = new Scanner(System.in);
 
-        int num = 0;
         int contPerf = 0, contAbu = 0, contDef = 0;
         int numActual = 1;
         System.out.println("Introdueix el rang.");
-        num = tec.nextInt();
+        int num = tec.nextInt();
 
         while (numActual <= num) {
 
