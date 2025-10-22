@@ -24,7 +24,7 @@ public class Extra4 {
             xIS = (xI + (numR / xI)) / 2;
 
         }
-        System.out.println("El valor de l'arrel quadrada del número que has introduït és" + xIS);
+        System.out.println("El valor de l'arrel quadrada del número que has introduït és " + xIS);
 
     }
 
