@@ -1,4 +1,6 @@
-package While;/*
+package While;
+
+/*
 Es diu que un número es perfecte si la suma dels seus divisors és igual al mateix
 número. Per exemple el número 6 és perfecte perquè la suma dels seus divisors
 (1+2+3) és igual a 6.
