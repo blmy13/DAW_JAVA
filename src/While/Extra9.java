@@ -4,17 +4,14 @@ factors primers només apareguin els números 2, 3 i 5.
  */
 package While;
 
-import java.util.Scanner;
 
 public class Extra9 {
 
     public static void main(String[] args) {
-
-        Scanner tec = new Scanner(System.in);
+    
         int num = 2;
         int contNum = 0;
-        boolean descomposable = true;
-        int div = 2;
+        boolean descomposable = true;       
 
         while (contNum <= 20) {
 
