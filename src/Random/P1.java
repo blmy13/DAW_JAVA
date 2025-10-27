@@ -11,10 +11,9 @@ public class P1 {
         int mida = tec.nextInt();
         System.out.println("Introdueix el número de nivells");
         int nivell = tec.nextInt();
-        
-        
-        for (int l = 1; l <= nivell; l++){
-                   
+
+        for (int l = 1; l <= nivell; l++) {
+
             //FIGURA PART SUPERIOR
             for (int i = 1; i <= mida; i++) {
                 for (int j = 1; j <= mida - i; j++) {
