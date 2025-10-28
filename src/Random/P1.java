@@ -14,6 +14,7 @@ public class P1 {
         
         //NIVELLS   
         for (int l = 1; l <= nivell; l++) {
+            //REPETICIONS HORITZONTALS
             for (int h = 1; h < nivell; h++) {
 
                 //FIGURA PART SUPERIOR
