@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class P1 {
 
     public static void main(String[] args) {
-
+        
         Scanner tec = new Scanner(System.in);
         System.out.println("Introdueix la mida del diamant:");
         int mida = tec.nextInt();
