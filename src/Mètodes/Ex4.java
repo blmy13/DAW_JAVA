@@ -27,7 +27,7 @@ public class Ex4 {
         System.out.println("Introdueix un número: ");
         int num = tec.nextInt();
         
-        System.out.println("El resultat és" + sumaDigits(num));
+        System.out.println("El resultat és " + sumaDigits(num));
         
     }
     
