@@ -1,7 +1,4 @@
-/*
-Fes un mètode `sumaDigits(int n)` que retorni la suma de tots els dígits d’un
-número. Exemple: si `n = 347`, el resultat és 3 + 4 + 7 = 14.
- */
+
 package Mètodes;
 
 import java.util.Scanner;
@@ -13,8 +10,6 @@ public class Ex4 {
         int d;
         int sumaD = 0;
         while (x > 1) {
-            
-            
             d = x % 10;
             x = x / 10;
             sumaD += d;
