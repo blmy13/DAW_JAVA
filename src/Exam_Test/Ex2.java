@@ -34,7 +34,7 @@ public class Ex2 {
 
         if (dia > diesMes) {
             System.out.println("Data no vàlida per al mes indicat.");
-            return;
+
         }
 
         int dia5 = dia + 5;
