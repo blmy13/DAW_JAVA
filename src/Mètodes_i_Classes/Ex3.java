@@ -2,7 +2,7 @@
 Crea quatre mètodes: `sumar`, `restar`, `multiplicar` i `dividir`. El programa ha
 de demanar dos números i una operació (`+`, `-`, `*`, `/`) i mostrar el resultat.
  */
-package Mètodes;
+package Mètodes_i_Classes;
 
 import java.util.Scanner;
 

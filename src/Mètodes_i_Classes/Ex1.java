@@ -1,5 +1,5 @@
 
-package Mètodes;
+package Mètodes_i_Classes;
 
 import java.util.Scanner;
 

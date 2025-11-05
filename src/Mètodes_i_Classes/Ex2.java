@@ -3,7 +3,7 @@
 cas contrari. El programa ha de demanar un número i indicar si és parell o
 imparell.
  */
-package Mètodes;
+package Mètodes_i_Classes;
 
 import java.util.Scanner;
 
