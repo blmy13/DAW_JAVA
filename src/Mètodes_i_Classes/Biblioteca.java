@@ -28,6 +28,7 @@ public class Biblioteca {
 
     public void afegirUsuari(Usuari usuari) {
         usuaris.add(usuari);
+        System.out.println("S'ha afegit l'usuari '" + usuari.nom + "' amb ID " + usuari.identificador + ".");
     }
 
     public void mostrarLlibresPerCategoria(String categoria) {
