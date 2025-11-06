@@ -35,7 +35,7 @@ public class Biblioteca {
         for (Llibre llibre : llibres) {
             if (llibre.getCategoria().equals(categoria)) {
                 System.out.println("Llibres de la categoria: " + llibre.categoria);
-                System.out.println(llibre.titol + "de " + llibre.autor + ".");
+                System.out.println(llibre.titol + " de " + llibre.autor + ".");
             }
         }
     }
@@ -66,7 +66,7 @@ public class Biblioteca {
             if (llibre.isPrestec()) {
                 llibre.retornar();
                 usuari.retornarLlibre(llibre);
-                System.out.println(usuari.nom + "ha retornat el llibre " + llibre.titol + ".");
+                System.out.println(usuari.nom + " ha retornat el llibre " + llibre.titol + ".");
             }
         }
     }
