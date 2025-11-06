@@ -1,4 +1,4 @@
-package Mètodes_i_Classes;
+package Mètodes_i_Classes.ExBiblio;
 
 import java.util.ArrayList;
 
