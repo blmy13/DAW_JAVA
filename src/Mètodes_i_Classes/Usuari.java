@@ -4,7 +4,7 @@ package Mètodes_i_Classes;
 import java.util.ArrayList;
 
 public class Usuari {
-    
+
     String nom, identificador;
     ArrayList<Llibre> llibresEnPrestec;
 
@@ -29,7 +29,8 @@ public class Usuari {
     public void setIdentificador(String identificador) {
         this.identificador = identificador;
     }
-    public ArrayList<Llibre> getLlibresEnPrestec(){
+
+    public ArrayList<Llibre> getLlibresEnPrestec() {
         return llibresEnPrestec;
     }
 
@@ -37,7 +38,7 @@ public class Usuari {
         llibresEnPrestec.add(llibre);
     }
 
-    public void retornarLlibre (Llibre llibre) {
+    public void retornarLlibre(Llibre llibre) {
         llibresEnPrestec.remove(llibre);
     }
 }

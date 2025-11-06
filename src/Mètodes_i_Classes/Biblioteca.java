@@ -39,8 +39,8 @@ public class Biblioteca {
         }
     }
 
-    public Llibre cercarLlibrePerTitol (String titol) {
-        for (Llibre llibre: llibres) {
+    public Llibre cercarLlibrePerTitol(String titol) {
+        for (Llibre llibre : llibres) {
             if (llibre.getTitol().equals(titol)) {
                 return llibre;
             }
@@ -48,7 +48,7 @@ public class Biblioteca {
         return null;
     }
 
-    public void prestarLlibre (String titol, Usuari usuari) {
+    public void prestarLlibre(String titol, Usuari usuari) {
         Llibre llibre = cercarLlibrePerTitol(titol);
         if (llibre != null) {
             if (!llibre.isPrestec()) {
@@ -58,7 +58,7 @@ public class Biblioteca {
         }
     }
 
-    public void retornarLlibre (String titol, Usuari usuari) {
+    public void retornarLlibre(String titol, Usuari usuari) {
         Llibre llibre = cercarLlibrePerTitol(titol);
         if (llibre != null) {
             if (llibre.isPrestec()) {

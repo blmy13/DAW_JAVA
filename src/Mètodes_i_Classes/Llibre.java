@@ -88,7 +88,7 @@ public class Llibre {
 
         nombreValoracions++;
         totalValoracions += novaValoracio;
-        valoracio = (double)totalValoracions / nombreValoracions;
+        valoracio = (double) totalValoracions / nombreValoracions;
     }
 
     public void prestar() {
