@@ -35,7 +35,7 @@ public class Biblioteca {
         for (Llibre llibre : llibres) {
             if (llibre.getCategoria().equals(categoria)) {
                 System.out.println("Llibres de la categoria: " + llibre.categoria);
-                System.out.println(llibre);
+                System.out.println(llibre.titol + "de " + llibre.autor + ".");
             }
         }
     }
