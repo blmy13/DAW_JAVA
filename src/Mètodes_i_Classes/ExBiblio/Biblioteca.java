@@ -55,6 +55,7 @@ public class Biblioteca {
             if (!llibre.isPrestec()) {
                 llibre.prestar();
                 usuari.agafarLlibre(llibre);
+                llibre.setPrestec(true);
                 System.out.println("El llibre " + llibre.titol + " ha estat prestat a " + usuari.nom + ".");
             }
         }
@@ -66,9 +67,31 @@ public class Biblioteca {
             if (llibre.isPrestec()) {
                 llibre.retornar();
                 usuari.retornarLlibre(llibre);
+                llibre.setPrestec(false);
                 System.out.println(usuari.nom + " ha retornat el llibre " + llibre.titol + ".");
             }
         }
+    }
+
+    public void mostrarLlibresEnPrestec() {
+        System.out.print("Els llibres en préstec són: ");
+        for (Llibre llibre : llibres) {
+            if (llibre.isPrestec()) {
+                System.out.print(llibre.titol + ", ");
+            }
+        }
+        System.out.println("");
+
+    }
+
+    public void mostrarLlibresDispobibles() {
+        System.out.print("Els llibres disponibles són: ");
+        for (Llibre llibre : llibres) {
+            if (!llibre.isPrestec()) {
+                System.out.print(llibre.titol + ", ");
+            }
+        }
+        System.out.println("");
     }
 
 }

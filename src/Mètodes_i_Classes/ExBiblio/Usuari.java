@@ -1,4 +1,3 @@
-
 package Mètodes_i_Classes.ExBiblio;
 
 import java.util.ArrayList;
@@ -42,5 +41,3 @@ public class Usuari {
         llibresEnPrestec.remove(llibre);
     }
 }
-
-

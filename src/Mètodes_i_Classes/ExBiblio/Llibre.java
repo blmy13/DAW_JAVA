@@ -1,4 +1,3 @@
-
 package Mètodes_i_Classes.ExBiblio;
 
 public class Llibre {
@@ -101,11 +100,11 @@ public class Llibre {
 
     @Override
     public String toString() {
-        return "Llibre{" +
-                "titol='" + titol + '\'' +
-                ", autor='" + autor + '\'' +
-                ", categoria='" + categoria + '\'' +
-                ", anyPublicacio=" + anyPublicacio +
-                '}';
+        return "Llibre{"
+                + "titol='" + titol + '\''
+                + ", autor='" + autor + '\''
+                + ", categoria='" + categoria + '\''
+                + ", anyPublicacio=" + anyPublicacio
+                + '}';
     }
 }
