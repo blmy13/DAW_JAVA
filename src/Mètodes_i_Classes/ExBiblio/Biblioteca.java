@@ -56,7 +56,7 @@ public class Biblioteca {
                 llibre.prestar();
                 usuari.agafarLlibre(llibre);
                 llibre.setPrestec(true);
-                System.out.println("El llibre " + llibre.titol + " ha estat prestat a " + usuari.nom + ".");
+                System.out.println("El llibre '" + llibre.titol + "' ha estat prestat a " + usuari.nom + ".");
             }
         }
     }
