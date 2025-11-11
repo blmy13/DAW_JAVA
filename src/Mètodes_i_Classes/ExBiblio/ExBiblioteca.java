@@ -32,7 +32,7 @@ public class ExBiblioteca {
         biblioteca.prestarLlibre("L'estrany", usuari3);
         biblioteca.prestarLlibre("Els Germans Karàmazov", usuari3);
         biblioteca.mostrarLlibresEnPrestec();
-        biblioteca.mostrarLlibresDispobibles();
+        biblioteca.mostrarLlibresDisponibles();
 
     }
 }

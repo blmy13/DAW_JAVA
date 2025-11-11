@@ -4,7 +4,7 @@ public class Client {
 
     private String nom, nif, telefon;
 
-    public Client(String nom, String nif, String telefon) {
+    public Client(String nif, String nom, String telefon) {
 
         this.nom = nom;
         this.nif = nif;

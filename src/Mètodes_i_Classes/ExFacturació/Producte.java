@@ -10,8 +10,8 @@ public class Producte {
 
         this.id = id;
         this.nom = nom;
-        this.preu = 0.0;
-        this.stock = 0;
+        this.preu = preu;
+        this.stock = stock;
 
     }
 

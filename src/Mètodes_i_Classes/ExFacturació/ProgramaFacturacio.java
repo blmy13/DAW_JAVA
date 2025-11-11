@@ -39,7 +39,7 @@ public class ProgramaFacturacio {
 
         for (Linia linia : factura1.getLinies()) {
             System.out.println(" Línia " + linia.getNumeroLinia() + ": " + linia.getProducte().getNom()
-                    + " - Quantitat: " + linia.getTotal() / linia.getProducte().getPreu()
+                    + " - Quantitat: " + linia.getQuantitat() //CANVI CODI MAIN
                     + " - Total: " + linia.getTotal());
         }
 

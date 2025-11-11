@@ -84,7 +84,7 @@ public class Biblioteca {
 
     }
 
-    public void mostrarLlibresDispobibles() {
+    public void mostrarLlibresDisponibles() {
         System.out.print("Els llibres disponibles són: ");
         for (Llibre llibre : llibres) {
             if (!llibre.isPrestec()) {

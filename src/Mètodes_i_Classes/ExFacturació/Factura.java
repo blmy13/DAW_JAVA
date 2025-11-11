@@ -17,6 +17,7 @@ public class Factura {
         this.data = data;
         this.total = 0;
         linies = new ArrayList<>();
+        this.client = client;
     }
 
     public int getIdFactura() {
@@ -42,6 +43,9 @@ public class Factura {
     public void afegirLiniaFactura(Linia linia) {
 
         linies.add(linia);
+        total += linia.calculTotal();
+        linia.getProducte().setStock((int) (linia.getProducte().getStock()-linia.getQuantitat()));
+
     }
 
 }
