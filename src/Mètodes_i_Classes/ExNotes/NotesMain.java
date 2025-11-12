@@ -7,8 +7,7 @@ public class NotesMain {
         for (Nota nota : notes) {
             System.out.println(nota.getAlumne().getNom());
             System.out.println(nota.getModul().getNom());
-            System.out.println(nota.getNota());
-            
+            System.out.println(nota.getNota());  
         }
     }
 

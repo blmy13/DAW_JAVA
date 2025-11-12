@@ -1,7 +1,7 @@
 package Mètodes_i_Classes.ExNotes;
 
 public class Nota {
-    
+
     private Modul modul;
     private Alumne alumne;
     private double nota;
@@ -27,7 +27,5 @@ public class Nota {
     public void setNota(double nota) {
         this.nota = nota;
     }
-    
-    
-    
+
 }

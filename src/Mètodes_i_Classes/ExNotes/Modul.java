@@ -1,7 +1,7 @@
 package Mètodes_i_Classes.ExNotes;
 
 public class Modul {
-    
+
     private int codi, curs;
     private String nom;
 
@@ -22,7 +22,5 @@ public class Modul {
     public int getCurs() {
         return curs;
     }
-    
-    
-    
+
 }

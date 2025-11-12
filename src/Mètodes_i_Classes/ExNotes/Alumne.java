@@ -1,7 +1,7 @@
 package Mètodes_i_Classes.ExNotes;
 
 public class Alumne {
-    
+
     private String dni, nom;
     private int edat;
 
@@ -26,7 +26,5 @@ public class Alumne {
     public void setEdat(int edat) {
         this.edat = edat;
     }
-    
-    
-    
+
 }
