@@ -57,7 +57,7 @@ public class Subhasta {
         return licitacions.get(licitacions.size() - 1);
     }
 
-    public boolean licitar(Usuari usuari, double quantitat) {
+    public void licitar(Usuari usuari, double quantitat) {
 
         Licitacio novaLicitacio = new Licitacio(this, usuari, quantitat);
         boolean licitacioAcceptada = true;
@@ -85,11 +85,9 @@ public class Subhasta {
             usuari.afegirLicitacio(novaLicitacio);
             System.out.println("Licitació acceptada.");
         }
-
-        return licitacioAcceptada;
     }
 
-    public boolean licitarNoQuantitat(Usuari usuari) {
+    public void licitarNoQuantitat(Usuari usuari) {
         Licitacio max = this.getLicitacioMax();
         double quantitatBase = 0.0;
         if (max != null) {
@@ -98,18 +96,16 @@ public class Subhasta {
             quantitatBase = 0.0;
         }
         double novaQuantitatBase = quantitatBase + 1;
-        return licitar(usuari, novaQuantitatBase);
+        licitar(usuari, novaQuantitatBase);
     }
 
-    public boolean executar(Subhasta subhasta) {
+    public void executar(Subhasta subhasta) {
 
         if (!this.tancada) {
             System.out.println("ERROR: No es pot executar la subhasta. No està tancada.");
-            return false;
         }
         if (this.executada) {
             System.out.println("ERROR: No es pot executar la subhasta. Ja està executada.");
-            return false;
         }
         Licitacio licitacioGuanyadora = this.getLicitacioMax();
         if (licitacioGuanyadora != null) {
@@ -128,7 +124,5 @@ public class Subhasta {
 
             System.out.println("Subhasta executada, l'ID del guanyador és: " + guanyador.getId() + " i s'emporta l'article: " + this.article + " per: " + importGuanyador + "€.");
         }
-        return this.executada;
-
     }
 }

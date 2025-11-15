@@ -5,9 +5,9 @@ public class SubhastaMain {
     public static void main(String[] args) {
 
         //Creació Usuaris
-        Usuari Joan = new Usuari("24869412Q", 100.00);
-        Usuari Pere = new Usuari("93712864N", 150.00);
-        Usuari Enric = new Usuari("91732846F", 300.00);
+        Usuari Joan = new Usuari("24869412Q", "Joan", 100.00);
+        Usuari Pere = new Usuari("93712864N", "Pere", 150.00);
+        Usuari Enric = new Usuari("91732846F", "Enric", 300.00);
         
         //Creació Subhasta
         Subhasta subhasta1 = new Subhasta(Joan, "Telèfon Mòbil");
@@ -22,7 +22,7 @@ public class SubhastaMain {
         //Comprovació licitació major
         Licitacio max = subhasta1.getLicitacioMax();
         if (max != null) {
-            System.out.println("La licitació major pel producte: " + max.getSubhasta().getArticle() + " feta per: " + max.getUsuari() + " és de: " + max.getQuantitat() + "€.");
+            System.out.println("La licitació major pel producte: " + max.getSubhasta().getArticle() + " feta per: " + max.getUsuari().getNom() + " és de: " + max.getQuantitat() + "€.");
         } else {
             System.out.println("No s'ha acceptat cap licitació.");
         }
@@ -34,7 +34,7 @@ public class SubhastaMain {
         //Comprovació licitació major
         Licitacio max2 = subhasta1.getLicitacioMax();
         if (max2 != null) {
-            System.out.println("La licitació major pel producte: " + max2.getSubhasta().getArticle() + " feta per: " + max2.getUsuari() + " és de: " + max2.getQuantitat() + "€.");
+            System.out.println("La licitació major pel producte: " + max2.getSubhasta().getArticle() + " feta per: " + max2.getUsuari().getNom() + " és de: " + max2.getQuantitat() + "€.");
         } else {
             System.out.println("No s'ha acceptat cap licitació.");
         }

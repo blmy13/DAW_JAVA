@@ -4,14 +4,20 @@ import java.util.ArrayList;
 
 public class Usuari {
 
-    private final String id;
+    private final String id, nom;
     private double credit;
     private final ArrayList<Licitacio> litAcceptades = new ArrayList<>();
     private final ArrayList<Subhasta> subGuanyades = new ArrayList<>();
     private final ArrayList<Subhasta> subPropietat = new ArrayList<>();
-    public Usuari(String id, double credit) {
+
+    public Usuari(String id, String nom, double credit) {
         this.id = id;
         this.credit = credit;
+        this.nom = nom;
+    }
+
+    public String getNom() {
+        return nom;
     }
 
     public ArrayList<Licitacio> getLitAcceptades() {
