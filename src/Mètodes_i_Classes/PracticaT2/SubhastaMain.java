@@ -4,7 +4,7 @@ public class SubhastaMain {
 
     public static void main(String[] args) {
 
-        //Creació Usuaris
+        //Creació Usuaris 
         Usuari Joan = new Usuari("24869412Q", "Joan", 100.00);
         Usuari Pere = new Usuari("93712864N", "Pere", 150.00);
         Usuari Enric = new Usuari("91732846F", "Enric", 300.00);

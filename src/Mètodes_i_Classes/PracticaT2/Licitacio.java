@@ -23,8 +23,4 @@ public class Licitacio {
     public double getQuantitat() {
         return quantitat;
     }
-    
-    
-
-    
 }
