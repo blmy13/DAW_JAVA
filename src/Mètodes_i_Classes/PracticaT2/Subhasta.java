@@ -59,20 +59,23 @@ public class Subhasta {
 
     public void licitar(Usuari usuari, double quantitat) {
 
-        Licitacio novaLicitacio = new Licitacio(this, usuari, quantitat);
+        Licitacio novaLicitacio=null;
         boolean licitacioAcceptada = true;
 
         if (this.tancada) {
             System.out.println("ERROR: No es pot licitar, subhasta tancada.");
             licitacioAcceptada = false;
         }
-        if (novaLicitacio.getUsuari().getCredit() < (novaLicitacio.getQuantitat())) {
-            System.out.println("ERROR: Crèdit insuficient.");
-            licitacioAcceptada = false;
-        }
         if (usuari.equals(this.propietari)) {
             System.out.println("ERROR: L'usuari és el propietari de la subhasta.");
             licitacioAcceptada = false;
+        }
+               
+        if (usuari.getCredit() < quantitat) {
+            System.out.println("ERROR: Crèdit insuficient.");
+            licitacioAcceptada = false;
+            
+        novaLicitacio = new Licitacio(this, usuari, quantitat);
         }
         Licitacio major = this.getLicitacioMax();
         double minQuantitat = (major == null) ? 0.0 : major.getQuantitat();
