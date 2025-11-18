@@ -78,6 +78,7 @@ public class Usuari {
         if (this.litAcceptades.isEmpty()) {
             System.out.println("    Cap licitació acceptada.");
         } else {
+          
             for (Licitacio l : this.litAcceptades) {
                 System.out.println("    -> Producte: " + l.getSubhasta().getArticle() + ", Quantitat: " + l.getQuantitat() + "€");
             }
