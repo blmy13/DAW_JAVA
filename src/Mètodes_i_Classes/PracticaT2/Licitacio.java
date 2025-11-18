@@ -2,9 +2,9 @@ package Mètodes_i_Classes.PracticaT2;
 
 public class Licitacio {
     
-    private Subhasta subhasta;
-    private Usuari usuari;
-    private double quantitat;
+    private final Subhasta subhasta;
+    private final Usuari usuari;
+    private final double quantitat;
 
     public Licitacio(Subhasta subhasta, Usuari usuari, double quantitat) {
         this.subhasta = subhasta;

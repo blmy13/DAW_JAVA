@@ -9,7 +9,7 @@ public class Subhasta {
     private boolean tancada;
     private boolean oberta;
     private boolean executada;
-    private ArrayList<Licitacio> licitacions = new ArrayList<>();
+    private final ArrayList<Licitacio> licitacions = new ArrayList<>();
 
     public Subhasta(Usuari propietari, String article) {
         this.propietari = propietari;
