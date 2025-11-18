@@ -39,7 +39,7 @@ public class SubhastaMain {
             System.out.println("No s'ha acceptat cap licitació.");
         }
         //Tancar subhasta1
-        subhasta1.setTancada(true);
+        subhasta1.tancarSubhasta(subhasta1);
         //Nova licitació Enric
         Licitacio licitacioEnric2 = new Licitacio(subhasta1,Enric,200.00);
         System.out.println("L'usuari Enric licita: " + licitacioEnric2.getQuantitat() + "€.");

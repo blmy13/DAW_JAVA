@@ -9,7 +9,7 @@ public class Subhasta {
     private boolean tancada;
     private boolean oberta;
     private boolean executada;
-    ArrayList<Licitacio> licitacions = new ArrayList<>();
+    private ArrayList<Licitacio> licitacions = new ArrayList<>();
 
     public Subhasta(Usuari propietari, String article) {
         this.propietari = propietari;
@@ -44,8 +44,8 @@ public class Subhasta {
         this.executada = executada;
     }
 
-    public void setTancada(boolean tancada) {
-        this.tancada = tancada;
+    public void tancarSubhasta(Subhasta subhasta) {
+        tancada = true;
         System.out.println("Subhasta tancada.");
     }
 
