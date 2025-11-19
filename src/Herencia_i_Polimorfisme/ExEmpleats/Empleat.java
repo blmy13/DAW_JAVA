@@ -17,12 +17,13 @@ public class Empleat {
         return id;
     }
     
+    
     public double calcularSalari(Empleat empleat) {
         double salari = 0.00;
         return salari;
     }
     
-    public String mostrarEmpleat(Empleat empleat) {
+    public void mostrarEmpleat(Empleat empleat) {
         
     }
 }

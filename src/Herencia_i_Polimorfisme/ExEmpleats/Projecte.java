@@ -23,10 +23,11 @@ public class Projecte {
         empleats.add(empleat);
     }
     
-    public Empleat mostrarEmpleat() {
+    public void mostrarEmpleat() {
         for (Empleat e : empleats) {
             
         }
+        
     }
     
 }
