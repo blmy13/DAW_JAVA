@@ -18,12 +18,11 @@ public class Empleat {
     }
     
     
-    public double calcularSalari(Empleat empleat) {
-        double salari = 0.00;
-        return salari;
+    public double calcularSalari() {
+        return 0.00;
     }
     
-    public void mostrarEmpleat(Empleat empleat) {
-        
+    public void mostrarInformacio() {
+        System.out.print("ID: " + this.id + ", " + "Nom: " + this.nom + ", ");
     }
 }

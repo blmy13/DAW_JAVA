@@ -20,9 +20,15 @@ public class EmpleatTempsParcial extends Empleat {
     }
     
     @Override
-    public double calcularSalari(Empleat empleat) {
-        double salari = this.horesTreballades * this.salariHora;
-        return salari;
+    public double calcularSalari() {
+        return this.horesTreballades * this.salariHora;
+    }
+
+    @Override
+    public void mostrarInformacio() {
+        super.mostrarInformacio();
+        System.out.print("Salari: " + calcularSalari() + "€\n");
+        System.out.println("Tipus: Temps parcial");
     }
 
 }

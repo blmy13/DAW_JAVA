@@ -25,10 +25,9 @@ public class Projecte {
     
     public void mostrarEmpleat() {
         for (Empleat e : empleats) {
-            //mostrar atributs usuaris
+            e.mostrarInformacio();
+            System.out.println();
         }
-        
-        
     }
-    
+
 }

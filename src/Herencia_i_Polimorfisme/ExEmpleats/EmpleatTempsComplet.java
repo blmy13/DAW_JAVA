@@ -8,19 +8,22 @@ public class EmpleatTempsComplet extends Empleat{
         
         super(nom, id);
         this.salariMensual = salariMensual;
-        
-        
     }
 
     public double getSalariMensual() {
         return salariMensual;
     }
-    
-    
+
     @Override
-    public double calcularSalari(Empleat empleat) {
+    public double calcularSalari() {
         this.getSalariMensual();
         return salariMensual;
     }
-    
+
+    @Override
+    public void mostrarInformacio() {
+        super.mostrarInformacio();
+        System.out.print("Salari: " + this.salariMensual + "€\n");
+        System.out.println("Tipus: Temps complet" );
+    }
 }
