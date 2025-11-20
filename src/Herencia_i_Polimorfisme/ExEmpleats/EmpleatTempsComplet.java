@@ -16,7 +16,6 @@ public class EmpleatTempsComplet extends Empleat{
 
     @Override
     public double calcularSalari() {
-        this.getSalariMensual();
         return salariMensual;
     }
 
