@@ -1,7 +1,5 @@
 package Herencia_i_Polimorfisme.ExEmpleats;
 
-import java.sql.SQLOutput;
-
 public class MainEmpleats {
 
     public static void main(String[] args) {
