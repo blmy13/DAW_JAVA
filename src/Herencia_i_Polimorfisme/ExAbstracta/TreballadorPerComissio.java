@@ -2,7 +2,7 @@ package Herencia_i_Polimorfisme.ExAbstracta;
 
 
 public class TreballadorPerComissio extends Treballador {
-    
+
     private final double vendesBrutes;
     private final double tarifaComissio;
 
@@ -19,14 +19,14 @@ public class TreballadorPerComissio extends Treballador {
     public double getTarifaComissio() {
         return tarifaComissio;
     }
-    
+
     @Override
     public void informacio() {
         super.informacio();
-        System.out.println("Vendes brutes del Treballador: \n" + vendesBrutes);
-        System.out.println("Comissio de Tarifa del Treballador: \n" + tarifaComissio);
+        System.out.println("- Vendes brutes del Treballador: \n\t" + vendesBrutes);
+        System.out.println("- Comissio de Tarifa del Treballador: \n\t" + tarifaComissio);
     }
-    
+
     @Override
     public double ingressos() {
         return vendesBrutes * tarifaComissio;

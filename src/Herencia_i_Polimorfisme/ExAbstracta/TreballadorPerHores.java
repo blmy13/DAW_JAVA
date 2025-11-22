@@ -18,12 +18,12 @@ public class TreballadorPerHores extends Treballador {
     public double getHores() {
         return hores;
     }
-    
+
     @Override
     public void informacio() {
         super.informacio();
-        System.out.println("- Sou del Treballador: \n" + sou + "€");
-        System.out.println("- Hores Treballades: \n" + hores + ".");
+        System.out.println("- Sou del Treballador: \n\t" + sou + "€");
+        System.out.println("- Hores Treballades: \n\t" + hores + ".");
     }
 
     @Override

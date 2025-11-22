@@ -2,8 +2,8 @@ package Herencia_i_Polimorfisme.ExAbstracta;
 
 
 public class TreballadorAssalariat extends Treballador {
-    
-    private double souSetmanal;
+
+    private final double souSetmanal;
 
     public TreballadorAssalariat(double souSetmanal, String nom, String cognom, String nss) {
         super(nom, cognom, nss);
@@ -17,12 +17,12 @@ public class TreballadorAssalariat extends Treballador {
     @Override
     public void informacio() {
         super.informacio();
-        System.out.println("- Sou Setmanal del Treballador:\n" + souSetmanal + "€");
+        System.out.println("- Sou Setmanal del Treballador:\n\t" + souSetmanal + "€");
     }
-    
+
     @Override
     public double ingressos() {
         return souSetmanal;
     }
-    
+
 }

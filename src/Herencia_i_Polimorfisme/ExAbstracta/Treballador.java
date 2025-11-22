@@ -25,8 +25,8 @@ public abstract class Treballador {
     }
 
     public void informacio() {
-        System.out.println("- Nom del Treballador: \n" + this.getNom() + " " + this.getCognom());
-        System.out.println("- Número de Seguretat Social del Treballador: \n" + this.getNss());
+        System.out.println("- Nom del Treballador: \n\t" + this.getNom() + " " + this.getCognom());
+        System.out.println("- Número de Seguretat Social del Treballador: \n\t" + this.getNss());
     }
 
     public abstract double ingressos();
