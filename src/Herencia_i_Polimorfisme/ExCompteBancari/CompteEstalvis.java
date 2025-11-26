@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class CompteEstalvis extends CompteBancari {
     
-    private static final double tipusInteres = 0.02;
+    private static double tipusInteres = 0.02;
     private double interes;
 
     public CompteEstalvis(double tipusInteres, String numCompte, double saldo) {
@@ -23,7 +23,7 @@ public class CompteEstalvis extends CompteBancari {
     
     @Override
     public String toString() {
-        return super.toString() + (this.getClass().getSimpleName());
+        return super.toString() + (this.getClass().getSimpleName() + "tipus d'Interes: " + tipusInteres);
     }
 
     @Override

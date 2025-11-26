@@ -24,6 +24,11 @@ public class CompteRentable extends CompteEstalvis implements Rentable{
         }
         return bonus;
     }
+    
+    @Override
+    public String toString() {
+        return super.toString() + "El bonus del compte és de: " + bonus();
+    }
 
     @Override
     public void capitalitzaInteres() {

@@ -2,7 +2,7 @@ package Herencia_i_Polimorfisme.ExCompteBancari;
 
 public class CompteCredit extends CompteCorrent {
 
-    private static double credit = 500.00;
+    private static double credit = 50000.00;
 
     public CompteCredit(boolean xecsEmesos, String numCompte, double saldo) {
         super(xecsEmesos, numCompte, saldo);
@@ -26,12 +26,19 @@ public class CompteCredit extends CompteCorrent {
     }
 
     @Override
-    public double reintegre(double x) {
+    public String toString() {
+        return super.toString() + "El credit és de: " + credit;
+    }
+
+    @Override
+    public void reintegre(double x) {
+
         double saldoTotal = getFondosDisponibles();
-        double saldoFinal = saldoTotal - x;
-        if (saldoFinal < 0) {
+        if (saldoTotal < x) {
             System.out.println("ERROR: La quantitat que es vol retirar supera el saldo disponible.");
+        } else {
+            this.setSaldo(this.getSaldo() - x);
         }
-        return saldoFinal;
+
     }
 }

@@ -10,7 +10,7 @@ public abstract class CompteBancari {
 
     public CompteBancari(String numCompte, double saldo) {
         this.numCompte = numCompte;
-        this.saldo = saldo;     
+        this.saldo = saldo;
     }
 
     public CompteBancari(String numCompte) {
@@ -24,7 +24,9 @@ public abstract class CompteBancari {
 
     @Override
     public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         CompteBancari that = (CompteBancari) o;
         return Double.compare(saldo, that.saldo) == 0 && Objects.equals(numCompte, that.numCompte);
     }
@@ -49,21 +51,25 @@ public abstract class CompteBancari {
     public void setSaldo(double saldo) {
         this.saldo = saldo;
     }
-    
+
     public double imposicio(double x) {
         return saldo + x;
     }
+
     public double getFondosDisponibles() {
         return this.saldo;
     }
 
-    public double reintegre(double x) {
-        double saldoFinal;
-        saldoFinal = saldo - x;
-        if (saldoFinal < 0) {
+    public void reintegre(double x) {
+
+        if (saldo < x) {
             System.out.println("ERROR: La quantitat que es vol retirar supera el saldo disponible.");
+        } else {
+            saldo -= x;
+
         }
-        return saldoFinal;
+
+
     }
 
 }
