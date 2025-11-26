@@ -31,6 +31,13 @@ public class Main {
         for (CompteBancari c : comptes) {
             System.out.println(c);
         }
+        
+        //Operacions
+        cCorrent2.reintegre(1000000.00);
+        cEstalvis1.imposicio(87631.47);
+        System.out.println("Nou saldo: " + cEstalvis1.getSaldo());
+        cCredit1.reintegre(4893.33);
+        System.out.println("Nou saldo: " + cCredit1.getSaldo());
     }
 
 }
