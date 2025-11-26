@@ -4,18 +4,18 @@ import java.time.LocalDate;
 
 public class ExamenEscrit extends Examen {
 
-    private int nota;
+    private double nota;
 
-    public ExamenEscrit(int nota, LocalDate data) {
+    public ExamenEscrit(double nota, LocalDate data) {
         super(data);
         this.nota = nota;
     }
 
-    public int getNota() {
+    public double getNota() {
         return nota;
     }
 
-    public void setNota(int nota) {
+    public void setNota(double nota) {
         this.nota = nota;
     }
 
