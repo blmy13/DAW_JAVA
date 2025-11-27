@@ -9,7 +9,7 @@ public class Alumne {
     private final String cognom;
     private final ArrayList<Examen> examens = new ArrayList<>();
 
-    public Alumne(String nom, String dni, String cognom) {
+    public Alumne(String dni, String cognom, String nom) {
         this.nom = nom;
         this.dni = dni;
         this.cognom = cognom;
@@ -17,6 +17,15 @@ public class Alumne {
 
     public String getNom() {
         return nom;
+    }
+
+    public boolean aprova() {
+        for (Examen e : examens) {
+            if (!e.aprova()) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public String getDni() {
@@ -31,9 +40,13 @@ public class Alumne {
         return examens;
     }
 
+    public void agregarExamen(Examen examen) {
+        examens.add(examen);
+    }
+
     @Override
     public String toString() {
-        return "Alumne{DNI = " + dni + ", cognom = " + cognom + ", nom = " + nom + "\nexamens = " + examens + '}';
+        return "DNI = " + dni + ", cognom = " + cognom + ", nom = " + nom + "\n";
     }
     
     

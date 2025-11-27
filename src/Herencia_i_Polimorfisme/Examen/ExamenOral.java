@@ -4,22 +4,30 @@ import java.time.LocalDate;
 
 public class ExamenOral extends Examen implements NivellSatisfaccio {
     
-    private double nota;
+    private String nivellSatisfaccio;
 
-    public ExamenOral(double nota, LocalDate data) {
+    public ExamenOral(String nivellSatisfaccio, LocalDate data) {
         super(data);
-        this.nota = nota;
+        this.nivellSatisfaccio = nivellSatisfaccio;
     }
 
-    public double getNota() {
-        return nota;
+    public String getNivellSatisfaccio() {
+        return nivellSatisfaccio;
     }
 
-    public void setNota(double nota) {
-        this.nota = nota;
+    public void setNivellSatisfaccio(String nivellSatisfaccio) {
+        this.nivellSatisfaccio = nivellSatisfaccio;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "ExamenOral: " + data;
+    }
+
+    @Override
+    public boolean aprova() {
+        return this.nivellSatisfaccio.equals(SUFICIENT) || this.nivellSatisfaccio.equals(EXCELENT);
+    }
     
     
     

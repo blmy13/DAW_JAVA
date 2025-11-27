@@ -20,6 +20,12 @@ public class ExamenEscrit extends Examen {
     }
 
     @Override
+    public String toString() {
+        return "ExamenEscrit: " + data;
+
+    }
+
+    @Override
     public boolean aprova() throws IllegalArgumentException {
 
         if (nota < 0 || nota > 10) {
