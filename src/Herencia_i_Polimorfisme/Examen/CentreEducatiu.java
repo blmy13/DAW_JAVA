@@ -23,7 +23,7 @@ public class CentreEducatiu {
     public void llistar() {
 
         for (Alumne a : alumnes) {
-            System.out.print(a.toString() + "\n");
+            System.out.print(a + "\n");
             System.out.print("Exàmens:\n");
 
             for (Examen e : a.getExamens()) {

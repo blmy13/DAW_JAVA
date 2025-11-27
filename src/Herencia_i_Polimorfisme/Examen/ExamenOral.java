@@ -3,7 +3,7 @@ package Herencia_i_Polimorfisme.Examen;
 import java.time.LocalDate;
 
 public class ExamenOral extends Examen implements NivellSatisfaccio {
-    
+
     private String nivellSatisfaccio;
 
     public ExamenOral(String nivellSatisfaccio, LocalDate data) {
@@ -28,8 +28,5 @@ public class ExamenOral extends Examen implements NivellSatisfaccio {
     public boolean aprova() {
         return this.nivellSatisfaccio.equals(SUFICIENT) || this.nivellSatisfaccio.equals(EXCELENT);
     }
-    
-    
-    
-}
 
+}

@@ -20,12 +20,13 @@ public class Alumne {
     }
 
     public boolean aprova() {
+        boolean aprovat = true;
         for (Examen e : examens) {
             if (!e.aprova()) {
-                return false;
+                aprovat = false;
             }
         }
-        return true;
+        return aprovat;
     }
 
     public String getDni() {
@@ -48,11 +49,5 @@ public class Alumne {
     public String toString() {
         return "DNI = " + dni + ", cognom = " + cognom + ", nom = " + nom + "\n";
     }
-    
-    
-    
-    
-    
-    
 
 }

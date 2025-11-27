@@ -17,7 +17,5 @@ public abstract class Examen implements Aprovable {
     public void setData(LocalDate data) {
         this.data = data;
     }
-    
-    
 
 }
