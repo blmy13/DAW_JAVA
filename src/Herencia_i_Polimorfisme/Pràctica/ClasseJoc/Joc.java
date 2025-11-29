@@ -1,19 +1,17 @@
-package Herencia_i_Polimorfisme.Pràctica;
+package Herencia_i_Polimorfisme.Pràctica.ClasseJoc;
 
 public abstract class Joc {
 
-    private int vides;
-    private final int videsInicials;
+    protected int vides;
+    protected final int videsInicials;
     private static int record = 0;
 
     public Joc(int videsInicials) {
         
         if (videsInicials > 10 || videsInicials < 1) {
             vides=0;
-           
             System.out.println("Vides no vàlides. El màxim és 10.");
         } else {
-           
             vides = videsInicials;
         }
          this.videsInicials = videsInicials;
@@ -25,14 +23,10 @@ public abstract class Joc {
     }
 
     public boolean treuVida() {
-        boolean quedenVides = true;
-
-        vides -= 1;
-        if (vides == 0) {
-            return false;
+        if (vides > 0) {
+            vides--;
         }
-
-        return quedenVides;
+        return vides > 0;
     }
 
     public void reiniciarPartida() {
@@ -41,7 +35,9 @@ public abstract class Joc {
 
     public void actualitzaRecord() {
         if (heGuanyat()) {
-            int puntuacio = videsInicials - vides;
+            int vGastades = videsInicials - vides;
+            int puntuacio = 10 - vGastades;
+            System.out.println("Puntuació Obtinguda: " + puntuacio);
             if (puntuacio == record) {
                 System.out.println("Has igualat el rècord");
             } else if (puntuacio > record) {
@@ -49,12 +45,9 @@ public abstract class Joc {
                 System.out.println("Enhorabona!!!\nHas superat el teu rècord. El nou rècord és: " + record);
             }
         }
-
     }
 
-    abstract void juga();
-
-    abstract boolean heGuanyat();
+    protected abstract boolean heGuanyat();
 
     
 }
