@@ -49,5 +49,4 @@ public abstract class Joc {
 
     protected abstract boolean heGuanyat();
 
-    
 }
