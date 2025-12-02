@@ -2,19 +2,18 @@ package Herencia_i_Polimorfisme.ExVoluntari;
 
 import java.util.ArrayList;
 
-public abstract class Personatge implements Armable {
+public class Personatge {
 
     private double puntsVida, puntsAtac;
-    private boolean proteccioArquer, proteccioCosACos, atacArquer, atacCosACos;
-    ArrayList<Armable> armes = new ArrayList();
+    private boolean proteccioArquer = false;
+    private boolean proteccioCosACos = false;
+    private boolean atacArquer = false;
+    private boolean atacCosACos = false;
+    ArrayList<Armable> armes = new ArrayList<>();
 
-    public Personatge(double puntsVida, double puntsAtac, boolean proteccioArquer, boolean proteccioCosACos, boolean atacArquer, boolean atacCosACos) {
+    public Personatge(double puntsVida, double puntsAtac) {
         this.puntsVida = puntsVida;
         this.puntsAtac = puntsAtac;
-        this.proteccioArquer = proteccioArquer;
-        this.proteccioCosACos = proteccioCosACos;
-        this.atacArquer = atacArquer;
-        this.atacCosACos = atacCosACos;
     }
 
     public void setPuntsVida(double puntsVida) {
@@ -24,8 +23,6 @@ public abstract class Personatge implements Armable {
     public void setPuntsAtac(double puntsAtac) {
         this.puntsAtac = puntsAtac;
     }
-    
-    
 
     public void setProteccioArquer(boolean proteccioArquer) {
         this.proteccioArquer = proteccioArquer;
@@ -43,8 +40,10 @@ public abstract class Personatge implements Armable {
         this.atacCosACos = atacCosACos;
     }
 
-    
-    
+    public void afegirArma(Armable a) {
+        armes.add(a);
+    }
+
     public double getPuntsVida() {
         return puntsVida;
     }
@@ -75,9 +74,8 @@ public abstract class Personatge implements Armable {
 
     public void equipar() {
         for (Armable a : armes) {
-        equiparPersonatge(this);
-    }
+            a.equiparPersonatge(this);
+        }
     }
 
-    
 }

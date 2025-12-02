@@ -1,7 +1,7 @@
 package Herencia_i_Polimorfisme.ExVoluntari;
 
 
-public class Armadura extends ArmaDefensa implements Armable {
+public class Armadura extends ArmaDefensa  {
 
     public Armadura(double percentatgeVida) {
         super(percentatgeVida = 1.5);

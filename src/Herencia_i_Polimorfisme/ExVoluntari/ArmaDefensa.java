@@ -7,16 +7,22 @@ public abstract class ArmaDefensa implements Armable{
     public ArmaDefensa(double percentatgeVida) {
         this.percentatgeVida = percentatgeVida;
     }
-         
+    public ArmaDefensa() {
+        percentatgeVida = 0;
+    }
+
+    public double getPercentatgeVida() {
+        return percentatgeVida;
+    }
+
     @Override
     public void equiparPersonatge(Personatge personatge) {
         personatge.setPuntsVida(personatge.getPuntsVida() * percentatgeVida);
         activarProteccio(personatge);
-        
     }
          
-    public void activarProteccio(Personatge personatge) {
+    public abstract void activarProteccio(Personatge personatge);
         
-    }
+
     
 }
