@@ -2,10 +2,11 @@ package Herencia_i_Polimorfisme.Pràctica.JocNumeros;
 
 import Herencia_i_Polimorfisme.Pràctica.Interfícies.Jugable;
 import Herencia_i_Polimorfisme.Pràctica.ClasseJoc.Joc;
-import static Herencia_i_Polimorfisme.Pràctica.Aplicació.Aplicació.tec;
+import java.util.Scanner;
 
 public abstract class JocNumeros extends Joc implements Jugable {
 
+    
     protected int triaRecent = -1;
 
     public JocNumeros(int videsInicials) {
@@ -14,6 +15,7 @@ public abstract class JocNumeros extends Joc implements Jugable {
 
     @Override
     public void juga() {
+        Scanner tec = new Scanner(System.in);
         reiniciarPartida();
 
         System.out.println("Comença el joc!!!");

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class Aplicació {
 
-    public static final Scanner tec = new Scanner(System.in);
+    static Scanner tec = new Scanner(System.in);
 
     public static Jugable triaJoc() {
 
@@ -31,6 +31,7 @@ public class Aplicació {
             System.out.println("Introdueix un número del 0 al 3 per triar un joc.");
             num = tec.nextInt();
         }
+
         return jocs.get(num);
     }
 
@@ -63,5 +64,6 @@ public class Aplicació {
         }
         System.out.println("Gràcies per jugar!!!");
         tec.close();
+
     }
 }
