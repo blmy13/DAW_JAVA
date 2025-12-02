@@ -25,6 +25,7 @@ public abstract class JocNumeros extends Joc implements Jugable {
         while (!validaNumero(tria)) {
             System.out.println("Introdueix un número vàlid: ");
             tria = tec.nextInt();
+            validaNumero(tria);
         }
         triaRecent = tria;
 
