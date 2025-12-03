@@ -2,8 +2,8 @@ package Herencia_i_Polimorfisme.ExVoluntari;
 
 public class Arc extends ArmaAtac {
 
-    public Arc(double percentatgeAtac) {
-        super(percentatgeAtac = 1.15);
+    public Arc() {
+        super(1.15);
     }
 
     @Override
