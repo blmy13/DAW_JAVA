@@ -10,7 +10,7 @@ public class Main {
         Dumbo.afegirArma(new Escut());
         Dumbo.afegirArma(new Armadura());
         Dumbo.afegirArma(new Arc());
-        
+  
         FelipeVI.afegirArma(new Armadura());
         FelipeVI.afegirArma(new Espasa());
         FelipeVI.afegirArma(new Escut());
