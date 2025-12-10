@@ -18,10 +18,21 @@ public class Ex6 {
         int[] notes = new int[MAX_ALUMNES];
         int suma = 0;
         double mitja = 0.0;
-
-        System.out.println("Introdueix la primera nota: ");
-        notes[0] = tec.nextInt();
-
+        int cont = 0;
+        
+        System.out.println("Introdueix la primera nota: "); 
+        int nota = tec.nextInt();
+        
+        while (cont <= MAX_ALUMNES && nota != -1) {
+            notes[cont] = nota;
+            cont++;
+            suma += nota;
+            System.out.println("Introdueix la primera nota: "); 
+            nota = tec.nextInt();
+            
+        }  
+        mitja = (double)suma / cont;
+        System.out.println("La mitja és: " + mitja);
 
     }
 }
