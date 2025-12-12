@@ -1,4 +1,4 @@
-package Taules;
+package Taules_i_Matrius;
 
 /*
 Fes un programa que donades dues taules inicialitzades amb els valors

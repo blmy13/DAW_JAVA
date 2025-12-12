@@ -1,4 +1,4 @@
-package Taules;
+package Taules_i_Matrius;
 
 /*
 Fes un programa que llegeixi les notes obtingudes pels alumnes d’una

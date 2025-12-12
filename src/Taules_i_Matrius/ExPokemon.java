@@ -1,4 +1,4 @@
-package Taules;
+package Taules_i_Matrius;
 
 import java.util.Random;
 

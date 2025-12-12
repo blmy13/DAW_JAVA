@@ -1,4 +1,4 @@
-package Taules;
+package Taules_i_Matrius;
 
 /*
 Fes un programa que donada una taula de números ja inicialitzada per codi,

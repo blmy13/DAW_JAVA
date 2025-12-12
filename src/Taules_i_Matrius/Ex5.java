@@ -1,4 +1,4 @@
-package Taules;
+package Taules_i_Matrius;
 
 /*
 Donades dues taules d’enters inicialitzades per codi, fes un programa que

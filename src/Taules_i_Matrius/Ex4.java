@@ -1,4 +1,4 @@
-package Taules;
+package Taules_i_Matrius;
 
 /*
 Fes un programa que, donat una taula de 10 enters ( introduïts per codi),
