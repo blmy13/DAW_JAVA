@@ -18,7 +18,7 @@ public class Ex7 {
 
         boolean igual = true;
         int i = 0;
-        int j = frase.length();
+        int j = frase.length()-1;
         char frase1[] = frase.toCharArray();
 
         while (igual && i < j) {
