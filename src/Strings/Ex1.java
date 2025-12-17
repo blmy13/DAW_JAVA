@@ -8,18 +8,17 @@ package Strings;
 import java.util.Scanner;
 
 public class Ex1 {
-    
+
     public static void main(String[] args) {
-        
+
         Scanner tec = new Scanner(System.in);
         System.out.println("Introdueix un DNI:");
         int dni = tec.nextInt();
         int num = dni % 23;
-        
+
         String taula = "TRWAGMYFPDXBNJZSQVHLCKE";
         System.out.println("La lletra del teu DNI és : " + taula.charAt(num));
-        
-       
+
     }
-    
+
 }

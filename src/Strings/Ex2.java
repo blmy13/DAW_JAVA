@@ -5,11 +5,10 @@ canviar un caràcter pel seu successor a l‟abecedari (el successor de „z‟ 
  */
 package Strings;
 
-
 public class Ex2 {
 
     public static void main(String[] args) {
-        String missatge = "pastaambpesto";
+        String missatge = "pasta amb pesto";
         String abecedari = "abcdefghijklmnoprstuvwxyz";
         String resultat = "";
 
@@ -31,4 +30,3 @@ public class Ex2 {
 
     }
 }
-
