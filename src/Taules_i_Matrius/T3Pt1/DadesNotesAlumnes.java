@@ -59,6 +59,7 @@ public class DadesNotesAlumnes {
                     nf1Alumne += nota * 0.25;
                 } else {
                     nf1Alumne += nota * 0.10;
+                   
                 }
 
                 sumaActivitats[j] += nota;
