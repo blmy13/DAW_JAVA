@@ -37,19 +37,20 @@ public class DadesNotesAlumnes {
             {0.39, 0.23, 5.15, 1.66, 1.66, 3.91, 6.96}};
 
         double maxNF1Global = 0;
+        double sumaNF1Global = 0;
         double maxNotaActivitatGlobal = 0;
 
         double[] sumaActivitats = new double[7];
         double[] maxActivitats = new double[7];
 
-        System.out.printf("%-12s | %-5s %-5s %-5s %-5s %-5s %-5s %-5s | %-8s%n",
+        System.out.printf("%-13s | %-5s %-5s %-5s %-5s %-5s %-5s %-5s | %-8s%n",
                 "Alumne", "Pt1", "Pt2", "Pe1", "Pt3", "Pt4", "Pt5", "Pe2", "Nota NF1");
         System.out.println("______________________________________________________________________");
         System.out.println();
 
         for (int i = 0; i < notes.length; i++) {
             double nf1Alumne = 0;
-            System.out.printf("Alumne %-5d | ", (i + 1));
+            System.out.printf("Alumne %-6d | ", (i + 1));
 
             for (int j = 0; j < notes[i].length; j++) {
                 double nota = notes[i][j];
@@ -59,7 +60,6 @@ public class DadesNotesAlumnes {
                     nf1Alumne += nota * 0.25;
                 } else {
                     nf1Alumne += nota * 0.10;
-                   
                 }
 
                 sumaActivitats[j] += nota;
@@ -73,6 +73,7 @@ public class DadesNotesAlumnes {
             }
 
             System.out.printf("| %8.2f%n", nf1Alumne);
+            sumaNF1Global += nf1Alumne;
 
             if (nf1Alumne > maxNF1Global) {
                 maxNF1Global = nf1Alumne;
@@ -80,21 +81,21 @@ public class DadesNotesAlumnes {
         }
 
         System.out.println("______________________________________________________________________");
-        System.out.printf("%-12s | ", "Nota mitjana");
+
+        System.out.printf("%-13s | ", "Nota mitjana");
         for (double suma : sumaActivitats) {
             System.out.printf("%5.2f ", (suma / notes.length));
         }
-        System.out.println("|");
+        System.out.printf("| %8.2f%n", (sumaNF1Global / notes.length));
 
-        System.out.printf("%-12s | ", "Nota més alta");
+        System.out.printf("%-13s | ", "Nota més alta");
         for (double max : maxActivitats) {
             System.out.printf("%5.2f ", max);
         }
-        System.out.println("|");
+        System.out.printf("| %8.2f%n", maxNF1Global);
 
         System.out.println("\n");
-        System.out.printf("- La nota final (NF1) més alta és: %.2f%n", maxNF1Global);
-        System.out.printf("- La nota més alta absoluta entre totes les activitats és: %.2f%n", maxNotaActivitatGlobal);
+        System.out.printf("- La nota final més alta és: %.2f%n", maxNF1Global);
+        System.out.printf("- La nota més alta de totes activitats és: %.2f%n", maxNotaActivitatGlobal);
     }
-
 }
