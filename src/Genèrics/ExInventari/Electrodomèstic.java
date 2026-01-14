@@ -32,6 +32,11 @@ public class Electrodomèstic implements Producte {
     public String getMarca() {
         return marca;
     }
+
+    @Override
+    public String toString() {
+        return "Electrodom\u00e8stic{" + "id=" + id + ", nom=" + nom + ", preu=" + preu + ", marca=" + marca + '}';
+    }
     
     
     

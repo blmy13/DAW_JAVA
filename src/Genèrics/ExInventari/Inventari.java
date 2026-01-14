@@ -13,33 +13,43 @@ public class Inventari<T extends Producte> {
         while (!repetit && i < productes.size()) {
             if (t.getId().equals(productes.get(i).getId())) {
                 repetit = true;
-                throw new IllegalArgumentException("Error; estàs intentant afegir un producte repetit");
             }
+
             i++;
+
         }
-        productes.add(t);
+        if (repetit) {
+            throw new IllegalArgumentException("Error; estàs intentant afegir un producte repetit");
+
+        }
     }
 
-    public Producte consultarProducte(String id) throws IllegalArgumentException {
+    public T consultarProducte(String id) throws IllegalArgumentException {
         boolean trobat = false;
         int i = 0;
         while (!trobat && i < productes.size()) {
             if (id.equals(productes.get(i).getId())) {
                 trobat = true;
-                return (productes.get(i));
             }
             i++;
         }
-        throw new IllegalArgumentException("Error; el producte no s'ha trobat");
+        if (trobat) {
+            return productes.get(i);
+        } else {
+            throw new IllegalArgumentException("Error; no s'ha trobat el producte que busques.");
+        }
 
     }
 
-    public void eliminarProducte(String id) throws IllegalArgumentException {
-        consultarProducte(id);
-        productes.remove(id);
+    public void eliminar(String id) {
+
+        T producte = consultarProducte(id);
+        productes.remove(producte);
+
     }
+
     public void mostrarTots() {
-        for  (T t : productes) {
+        for (T t : productes) {
             System.out.println(t);
         }
     }
