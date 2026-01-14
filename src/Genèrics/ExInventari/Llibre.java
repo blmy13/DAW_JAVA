@@ -36,7 +36,7 @@ public class Llibre implements Producte {
 
     @Override
     public String toString() {
-        return "Llibre{" + "id=" + id + ", nom=" + nom + ", preu=" + preu + ", autor=" + autor + '}';
+        return "Llibre || " + "ID: " + id + " || nom: " + nom + " || Preu: " + preu + "€ || Autor: " + autor;
     }
     
     

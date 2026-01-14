@@ -14,14 +14,13 @@ public class Inventari<T extends Producte> {
             if (t.getId().equals(productes.get(i).getId())) {
                 repetit = true;
             }
-
             i++;
-
         }
         if (repetit) {
             throw new IllegalArgumentException("Error; estàs intentant afegir un producte repetit");
-
         }
+        productes.add(t);
+        System.out.println("Producte afegit correctament.");
     }
 
     public T consultarProducte(String id) throws IllegalArgumentException {
@@ -30,8 +29,10 @@ public class Inventari<T extends Producte> {
         while (!trobat && i < productes.size()) {
             if (id.equals(productes.get(i).getId())) {
                 trobat = true;
+            } else {
+                i++;
+
             }
-            i++;
         }
         if (trobat) {
             return productes.get(i);
@@ -49,8 +50,12 @@ public class Inventari<T extends Producte> {
     }
 
     public void mostrarTots() {
-        for (T t : productes) {
-            System.out.println(t);
+        if (productes.isEmpty()) {
+            System.out.println("L'inventari està buit");
+        } else {
+            for (T t : productes) {
+                System.out.println(t);
+            }
         }
     }
 }
