@@ -24,7 +24,7 @@ public class Inventari<T extends Producte> {
         }
     }
 
-    public String consultarProducte(String id) throws IllegalArgumentException {
+    public T consultarProducte(String id) throws IllegalArgumentException {
         boolean trobat = false;
         int i = 0;
         while (!trobat && i < productes.size()) {
@@ -34,13 +34,20 @@ public class Inventari<T extends Producte> {
             i++;
         }
         if (trobat) {
-            return productes.get(i).getId();
+            return productes.get(i);
         } else {
             throw new IllegalArgumentException("Error; no s'ha trobat el producte que busques.");
         }
 
     }
-    
+
+    public void eliminar(String id) {
+
+        T producte = consultarProducte(id);
+        productes.remove(producte);
+
+    }
+
     public void mostrarTots() {
         for (T t : productes) {
             System.out.println(t);

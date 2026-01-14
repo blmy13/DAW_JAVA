@@ -33,6 +33,13 @@ public class Llibre implements Producte {
     public String getAutor() {
         return autor;
     }
+
+    @Override
+    public String toString() {
+        return "Llibre{" + "id=" + id + ", nom=" + nom + ", preu=" + preu + ", autor=" + autor + '}';
+    }
+    
+    
     
     
 }
