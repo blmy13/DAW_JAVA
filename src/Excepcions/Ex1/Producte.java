@@ -26,7 +26,7 @@ public class Producte {
 
     @Override
     public String toString() {
-        return "Producte: " + "nom=" + nom + ", preu=" + preu + ", quantitat=" + quantitat + '}';
+        return "Producte: " +  nom + " | Preu: " + preu + "€ | Quantitat: " + quantitat + " | Import Total: " + calcularTotal() + "€";
     }
 
 }
