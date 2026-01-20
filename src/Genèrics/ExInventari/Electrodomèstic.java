@@ -35,7 +35,7 @@ public class Electrodomèstic implements Producte {
 
     @Override
     public String toString() {
-        return "Electrodomèstic: " + "ID: " + id + " || Nom: " + nom + " || Preu: " + preu + "€ || Marca: " + marca;
+        return "Electrodomèstic: " + "ID: " + id + " || Nom: " + nom + " || Preu: " + preu + "€ || Marca:  " + marca;
     }
 
 }
