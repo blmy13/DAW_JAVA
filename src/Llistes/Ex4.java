@@ -19,7 +19,7 @@ public class Ex4 {
             }
         }
         
-        strings.removeIf(cadena -> cadena.length() < 4); //més ràpida però iterador no falla
+        strings.removeIf(cadena -> cadena.length() < 4); 
     }
 
 }
