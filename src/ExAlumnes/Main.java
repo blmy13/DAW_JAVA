@@ -1,18 +1,22 @@
 package ExAlumnes;
 
+import java.util.HashMap;
+
 class Alumne {
-    private  String nom;
-    private  String cognoms;
-    private  String nif;
-    private  int edat;
-    private  double nota;
+
+    private String nom;
+    private String cognoms;
+    private String nif;
+    private int edat;
+    private double nota;
 
     public Alumne(String nom, String cognoms, String nif, int edat, double nota) {
-        this.nom = nom;
-        this.cognoms = cognoms;
+
+        setNom(nom);
+        setCognoms(cognoms);
         this.nif = nif;
-        this.edat = edat;
-        this.nota = nota;
+        setEdat(edat);
+        setNota(nota);
     }
 
     public String getNom() {
@@ -54,18 +58,23 @@ class Alumne {
     public void setNota(double nota) {
         this.nota = nota;
     }
-     
-    
+
+    @Override
+    public String toString() {
+        return "Alumne{" + "nom=" + nom + ", cognoms=" + cognoms + ", nif=" + nif + ", edat=" + edat + ", nota=" + nota + '}';
+    }
+
 }
 
 public class Main {
-    
+
     public static void main(String[] args) {
-        
+
+        HashMap<String, Alumne> alumnes = new HashMap<>();
         System.out.println("=== MENÚ ====");
         System.out.println("Introdueix el nom de l'alumne");
         System.out.println("Introdueix el cognom del l'alumne");
-        
+
     }
-    
+
 }
