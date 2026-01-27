@@ -3,7 +3,18 @@ package ExAlumnes;
 class Alumne {
     private final String nom;
     private final String cognoms;
+    private final String nif;
     private final int edat;
+    private final double nota;
+
+    public Alumne(String nom, String cognoms, String nif, int edat, double nota) {
+        this.nom = nom;
+        this.cognoms = cognoms;
+        this.nif = nif;
+        this.edat = edat;
+        this.nota = nota;
+    }
+     
     
 }
 
