@@ -1,17 +1,57 @@
 package ExAlumnes;
 
 class Alumne {
-    private final String nom;
-    private final String cognoms;
-    private final String nif;
-    private final int edat;
-    private final double nota;
+    private  String nom;
+    private  String cognoms;
+    private  String nif;
+    private  int edat;
+    private  double nota;
 
     public Alumne(String nom, String cognoms, String nif, int edat, double nota) {
         this.nom = nom;
         this.cognoms = cognoms;
         this.nif = nif;
         this.edat = edat;
+        this.nota = nota;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getCognoms() {
+        return cognoms;
+    }
+
+    public void setCognoms(String cognoms) {
+        this.cognoms = cognoms;
+    }
+
+    public String getNif() {
+        return nif;
+    }
+
+    public void setNif(String nif) {
+        this.nif = nif;
+    }
+
+    public int getEdat() {
+        return edat;
+    }
+
+    public void setEdat(int edat) {
+        this.edat = edat;
+    }
+
+    public double getNota() {
+        return nota;
+    }
+
+    public void setNota(double nota) {
         this.nota = nota;
     }
      
