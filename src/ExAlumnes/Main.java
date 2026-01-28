@@ -120,6 +120,7 @@ class Alumne {
                             System.out.println("ERROR: L'edat i la nota han de ser números");
                         }
                         break;
+
                     case 2:
                         System.out.println("Introdueix el NIF de l'alumne que vols buscar:");
                         String nifIntroduit = sc.nextLine();
@@ -132,6 +133,7 @@ class Alumne {
                             System.out.println("L'alumne amb NIF: " + nifIntroduit + " no existeix.");
                         }
                         break;
+
                     case 3:
                         List<String> nifsOrdenats = new ArrayList<>(alumnes.keySet());
                         Collections.sort(nifsOrdenats);
@@ -140,9 +142,11 @@ class Alumne {
                             System.out.println(alumnes.get(nif));
                         }
                         break;
+
                     case 4:
                         finalitzat = true;
                         break;
+
                     default:
                         System.out.println("Opció no vàlida.");
                 }
