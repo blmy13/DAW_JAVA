@@ -107,6 +107,15 @@ public class ExGimnas {
                     }
                     break;
                 case 5:
+                    clients.pollFirst();
+                    clients.pollLast();
+                    break;
+                case 6:
+                    System.out.println("Primer número del rang");
+                    int num1 = sc.nextInt();
+                    System.out.println("Segon número del rang");
+                    int num2 = ient) sc.nextInt();
+                    clients.subSet(nomElim, cl
                     
                     
 
