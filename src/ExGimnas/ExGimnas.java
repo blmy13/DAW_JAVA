@@ -2,7 +2,9 @@ package ExGimnas;
 
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.Objects;
 import java.util.Scanner;
+import java.util.SortedSet;
 import java.util.TreeSet;
 
 class Client {
@@ -33,8 +35,33 @@ class Client {
     public String toString() {
         return "CLIENT: " + "NOM: " + nom + " | EDAT: " + edat + " | EMAIL: " + email;
     }
-    
-    
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Client other = (Client) obj;
+        if (this.edat != other.edat) {
+            return false;
+        }
+        if (!Objects.equals(this.nom, other.nom)) {
+            return false;
+        }
+        return Objects.equals(this.email, other.email);
+    }
 
 }
 
@@ -81,6 +108,7 @@ public class ExGimnas {
                     clients.removeIf(c -> c.getNom().equals(nomElim));
                     System.out.println("Client eliminat");
                     break;
+
                 case 3:
                     System.out.println("Nom del client que vols buscar");
                     String nomBuscar = sc.nextLine();
@@ -99,6 +127,7 @@ public class ExGimnas {
                         System.out.println("No s'ha trobat el client " + nomBuscar);
                     }
                     break;
+
                 case 4:
                     Iterator<Client> it1 = clients.iterator();
                     System.out.println("CLIENTS REGIRSTRATS:");
@@ -106,18 +135,53 @@ public class ExGimnas {
                         System.out.println(it1.next());
                     }
                     break;
+                    
                 case 5:
                     clients.pollFirst();
                     clients.pollLast();
                     break;
+
                 case 6:
-                    System.out.println("Primer número del rang");
-                    int num1 = sc.nextInt();
-                    System.out.println("Segon número del rang");
-                    int num2 = ient) sc.nextInt();
-                    clients.subSet(nomElim, cl
+                    System.out.println("Primer client del rang");
+                    String c1 = sc.nextLine();
+                    System.out.println("Segon client del rang");
+                    String c2 = sc.nextLine();
+
+                    SortedSet<Client> Rang = clients.subSet(
+                            new Client(c1, 0, ""),
+                            new Client(c2, 0, "")
+                    );
+                    break;
                     
+                case 7:
+                    System.out.println("Nom del client");
+                    String cAnterior = sc.nextLine();
+                    SortedSet<Client> anterior = clients.headSet(new Client (cAnterior, 0, ""));
+                    System.out.println(anterior);
+                    break;
                     
+                case 8:
+                    System.out.println("Nom del client");
+                    String cPosterior = sc.nextLine();
+                    SortedSet<Client> posterior = clients.tailSet(new Client(cPosterior, 0, ""));
+                    System.out.println(posterior);
+                    break;
+                    
+                case 9:
+                    System.out.println("Nom del client");
+                    String nomClient = sc.nextLine();
+                    System.out.println("Client previ o posterior (1 / 2)");
+                    int triaClient = sc.nextInt();
+                    if (triaClient == 1) {
+                        clients.lower(new Client(nomClient, 0, ""));
+                    } else {
+                        clients.higher(new Client(nomClient, 0, ""));
+                    }
+                    break;
+                    
+                case 10:
+                    finalitzat = true;
+                    System.out.println("PROGRAMA FINALITZAT");
 
             }
         }
