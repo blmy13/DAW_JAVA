@@ -1,4 +1,4 @@
-package Arrays.ExProducte;
+package Coleccions.ExProducte;
 
 class Producte {
 

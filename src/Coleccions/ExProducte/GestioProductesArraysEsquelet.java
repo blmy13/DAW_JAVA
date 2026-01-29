@@ -1,4 +1,4 @@
-package Arrays.ExProducte;
+package Coleccions.ExProducte;
 
 import java.util.Arrays;
 import java.util.Comparator;
