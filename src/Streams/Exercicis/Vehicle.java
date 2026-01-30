@@ -1,4 +1,4 @@
-package ExercicisVehicles;
+package Streams.Exercicis;
 
 enum Model {
     BMW,
