@@ -9,6 +9,6 @@ public class Ex2 {
 
         System.out.println("Introdueix usuari");
         String user = sc.nextLine();
-        System.out.println((user.matches("([A-Z])\\w{2,14}") ? "Usuari vàlid" : "Usuari no vàlid")); 
+        System.out.println((user.matches("([a-zA-Z])\\w{2,14}") ? "Usuari vàlid" : "Usuari no vàlid"));
     }
 }

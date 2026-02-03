@@ -8,6 +8,6 @@ public class Ex3 {
         
         System.out.println("Introdueix número de telèfon");
         String num = sc.nextLine();
-        System.out.println((num.matches("(\\+34 )?\\d{3} \\d{3} \\d{3} ") ? "Número vàlid" : "Número no vàlid"));
+        System.out.println((num.matches("(\\+34 )?6\\d{2} \\d{3} \\d{3}") ? "Número vàlid" : "Número no vàlid"));
     }
 }
