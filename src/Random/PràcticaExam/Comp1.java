@@ -29,6 +29,7 @@ public class Comp1 {
                     '}';
         }
     }
+
     @FunctionalInterface
     interface Descomptable {
         double aplicar(double preu);
