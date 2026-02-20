@@ -16,7 +16,7 @@ public class Ex2 {
         if (fitxer.exists() && fitxer.isFile()) {
             try (Scanner tec = new Scanner( new File (nom))) {
                 if (tec.hasNextDouble()) {
-                    while (tec.hasNextDouble() && tec.hasNextDouble() != -1)) {
+                    while (tec.hasNextDouble() && tec.nextDouble() != -1)) {
                         
                     }
                 }
