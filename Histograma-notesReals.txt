@@ -1,0 +1,6 @@
+Histograma del fitxer notesReals.txt
+----------------------------------------
+Suspès         : ********
+Aprovat        : ***
+Notable        : ********
+Excel·lent     : *
