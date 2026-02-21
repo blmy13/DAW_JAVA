@@ -50,9 +50,7 @@ public class Ex2 {
                 System.out.println("S'ha generat el fitxer: Histograma-" + nom);
 
             } catch (FileNotFoundException ex) {
-                System.out.println("Error en els fitxers: " + ex.getMessage());
-            } catch (Exception e) {
-                System.out.println("Error inesperat llegint les dades: " + e);
+                System.out.println(ex);
             }
         } else {
             System.out.println("El fitxer '" + nom + "' no existeix a la carpeta del projecte.");
