@@ -19,7 +19,8 @@ public class Competicio {
         gol.nextInt(8);
         
         try (Formatter f = new Formatter(nom)) {
-            //escriure a resultat.txt els partits 
+            //escriure a resultat.txt els partits
+            
         } catch (FileNotFoundException ex) {
             System.out.println(ex);
         }
