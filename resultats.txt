@@ -1,0 +1,12 @@
+EQUIPS               GOLS 1  GOLS 2 
+-----------------------------------
+Alison     Marc       3       3      
+Alison     Enric      1       5      
+Alison     Satan      4       5      
+Alison     Mochi      3       1      
+Marc       Enric      2       5      
+Marc       Satan      4       1      
+Marc       Mochi      4       5      
+Enric      Satan      5       4      
+Enric      Mochi      0       3      
+Satan      Mochi      5       2      
