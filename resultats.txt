@@ -1,12 +1,17 @@
-EQUIPS               GOLS 1  GOLS 2 
+EQUIPS               PUNTS 1 PUNTS 2
 -----------------------------------
-Alison     Marc       3       3      
-Alison     Enric      1       5      
-Alison     Satan      4       5      
-Alison     Mochi      3       1      
-Marc       Enric      2       5      
-Marc       Satan      4       1      
-Marc       Mochi      4       5      
-Enric      Satan      5       4      
-Enric      Mochi      0       3      
-Satan      Mochi      5       2      
+Celtics    Pistons    99      96     
+Celtics    Grizzlies  99      81     
+Celtics    Suns       73      101    
+Celtics    Thunder    78      102    
+Celtics    Pelicans   109     97     
+Pistons    Grizzlies  70      109    
+Pistons    Suns       70      89     
+Pistons    Thunder    92      103    
+Pistons    Pelicans   76      109    
+Grizzlies  Suns       99      70     
+Grizzlies  Thunder    105     85     
+Grizzlies  Pelicans   74      100    
+Suns       Thunder    86      84     
+Suns       Pelicans   108     93     
+Thunder    Pelicans   97      90     

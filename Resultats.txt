@@ -1,0 +1,17 @@
+EQUIPS               PUNTS 1 PUNTS 2
+-----------------------------------
+Celtics    Pistons    91      74     
+Celtics    Grizzlies  92      77     
+Celtics    Suns       82      92     
+Celtics    Thunder    74      107    
+Celtics    Pelicans   96      98     
+Pistons    Grizzlies  101     74     
+Pistons    Suns       110     82     
+Pistons    Thunder    74      78     
+Pistons    Pelicans   78      89     
+Grizzlies  Suns       100     101    
+Grizzlies  Thunder    93      78     
+Grizzlies  Pelicans   109     94     
+Suns       Thunder    109     80     
+Suns       Pelicans   109     76     
+Thunder    Pelicans   101     74     
