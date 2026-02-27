@@ -7,7 +7,7 @@ public class Matriu {
         int suma = 0;
 
         for (int[] ints : num) {
-            for (int j = 0; j < num.length; j++) {
+            for (int j = 0; j < ints.length; j++) {
                 suma += ints[j];
             }
         }
