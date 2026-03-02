@@ -3,6 +3,7 @@ package Test.Exam2;
 import java.util.*;
 
 class Categoria {
+
     private final String nom;
     private final int puntuacio;
 
@@ -26,6 +27,7 @@ class Categoria {
 }
 
 class Videojoc {
+
     private final String titol;
     private final int id;
     private Categoria[] categories = new Categoria[3];
@@ -59,6 +61,7 @@ class Videojoc {
 }
 
 public class ExamenVideojocs {
+
     public static void main(String[] args) {
         List<Videojoc> cataleg = creaLlistaVideojocs();
         System.out.println("=== Llista inicial de Videojocs ===");
@@ -66,7 +69,6 @@ public class ExamenVideojocs {
         System.out.println("===================================\n");
 
         // Aquí anirem cridant els mètodes a mesura que els resolguis
-
         // Per l'Exercici 0, farem servir aquest array de prova:
         String[] jocsProva = {"Zelda", "Assassin's Creed", "Mario Kart", "Halo", "GTA V"};
         // ex0(jocsProva);
@@ -86,9 +88,9 @@ public class ExamenVideojocs {
         for (int i = 0; i < titols.length; i++) {
             Videojoc v = new Videojoc(titols[i], ids[i]);
             v.setCategories(new Categoria[]{
-                    new Categoria("Gràfics", r.nextInt(101)),
-                    new Categoria("Jugabilitat", r.nextInt(101)),
-                    new Categoria("So", r.nextInt(101))
+                new Categoria("Gràfics", r.nextInt(101)),
+                new Categoria("Jugabilitat", r.nextInt(101)),
+                new Categoria("So", r.nextInt(101))
             });
             llista.add(v);
         }
@@ -96,7 +98,6 @@ public class ExamenVideojocs {
     }
 
     // ====== Exercicis (Per completar) ======
-
     public static String[] ex0(String[] titols) {
         String[] videojocs = Arrays.copyOf(titols, titols.length);
         for (int i = 0; i < titols.length; i++) {
@@ -158,6 +159,7 @@ public class ExamenVideojocs {
 
     @FunctionalInterface
     interface Filtre<T> {
+
         boolean aplicar(T t);
     }
 }
