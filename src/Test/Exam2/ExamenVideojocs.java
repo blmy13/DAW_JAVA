@@ -74,6 +74,7 @@ public class ExamenVideojocs {
         // ex0(jocsProva);
         System.out.println(Arrays.toString(ex0(jocsProva)));
         ex6(cataleg, v -> v.getTitol().startsWith("Z"));
+        
 
     }
 
