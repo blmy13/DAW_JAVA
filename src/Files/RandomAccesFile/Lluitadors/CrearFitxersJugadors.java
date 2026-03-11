@@ -35,6 +35,7 @@ class CrearFitxerLluitadors {
 
     public static int mostrarMenu() {
         Scanner sc = new Scanner(System.in);
+        System.out.println();
         System.out.println("-- MENÚ --");
         System.out.println("1. VEURE TOTS ELS LLUITADORS");
         System.out.println("2. MODIFICAR VIDA D'UN LLUITADOR");
@@ -69,7 +70,6 @@ class CrearFitxerLluitadors {
 
                 System.out.printf("%-20s %-5.2f %-5d %-5d %6d %12d %10d%n", nomLlegit.trim(), poder, vida, atac, defensa, velocitat, victories);
             }
-            System.out.println();
         } catch (IOException e) {
             System.out.println(e);
         }
