@@ -169,8 +169,8 @@ class CrearFitxerLluitadors {
             modificarVida(index2, 0);
         } else {
             System.out.println("El guanyador és " + p2.nom + "!");
-            modificarVictories(index1, p2.victories + 1);
-            modificarVida(index1, p2.vida);
+            modificarVictories(index2, p2.victories + 1);
+            modificarVida(index2, p2.vida);
             modificarVida(index1, 0);
         }
 
