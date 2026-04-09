@@ -39,6 +39,8 @@ public class Ex5 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setToolTipText("Comanda de Productes");
+
         jLabel1.setText("Producte:");
 
         jLabel2.setText("Quantitat:");
