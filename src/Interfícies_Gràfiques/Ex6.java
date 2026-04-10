@@ -4,6 +4,10 @@
  */
 package Interfícies_Gràfiques;
 
+import java.awt.Color;
+import java.io.File;
+import javax.swing.JColorChooser;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,13 +27,7 @@ public class Ex6 extends javax.swing.JFrame {
 
     private void actualitzarText() {
 
-        if (jRadioButtonVermell.isSelected()) {
-            jTextAreaBotons.setForeground(java.awt.Color.RED);
-        } else if (jRadioButtonBlau.isSelected()) {
-            jTextAreaBotons.setForeground(java.awt.Color.BLUE);
-        } else if (jRadioButtonVerd.isSelected()) {
-            jTextAreaBotons.setForeground(java.awt.Color.GREEN);
-        }
+        jTextAreaBotons.setForeground(JColorChooser.showDialog(this, "Tria un color", Color.yellow));
 
         int estil = java.awt.Font.PLAIN;
 
@@ -72,11 +70,9 @@ public class Ex6 extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaBotons = new javax.swing.JTextArea();
-        jRadioButtonBlau = new javax.swing.JRadioButton();
-        jRadioButtonVermell = new javax.swing.JRadioButton();
-        jRadioButtonVerd = new javax.swing.JRadioButton();
         jCheckBoxNegreta = new javax.swing.JCheckBox();
         jCheckBoxCursiva = new javax.swing.JCheckBox();
+        jButtonTriaColor = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jComboBoxNav = new javax.swing.JComboBox<>();
 
@@ -171,52 +167,39 @@ public class Ex6 extends javax.swing.JFrame {
         jTextAreaBotons.setText("AAAAAAAAAAA");
         jScrollPane1.setViewportView(jTextAreaBotons);
 
-        buttonGroup1.add(jRadioButtonBlau);
-        jRadioButtonBlau.setText("Blau");
-        jRadioButtonBlau.addActionListener(this::jRadioButtonBlauActionPerformed);
-
-        buttonGroup1.add(jRadioButtonVermell);
-        jRadioButtonVermell.setText("Vermell");
-        jRadioButtonVermell.addActionListener(this::jRadioButtonVermellActionPerformed);
-
-        buttonGroup1.add(jRadioButtonVerd);
-        jRadioButtonVerd.setText("Verd");
-        jRadioButtonVerd.addActionListener(this::jRadioButtonVerdActionPerformed);
-
         jCheckBoxNegreta.setText("Negreta");
         jCheckBoxNegreta.addActionListener(this::jCheckBoxNegretaActionPerformed);
 
         jCheckBoxCursiva.setText("Cursiva");
         jCheckBoxCursiva.addActionListener(this::jCheckBoxCursivaActionPerformed);
 
+        jButtonTriaColor.setText("Selecció Color");
+        jButtonTriaColor.addActionListener(this::jButtonTriaColorActionPerformed);
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(81, 81, 81)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jCheckBoxNegreta)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jCheckBoxCursiva))
+                        .addGap(81, 81, 81)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jCheckBoxNegreta)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jCheckBoxCursiva))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jRadioButtonBlau)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jRadioButtonVerd)
-                        .addGap(54, 54, 54)
-                        .addComponent(jRadioButtonVermell))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(83, Short.MAX_VALUE))
+                        .addGap(155, 155, 155)
+                        .addComponent(jButtonTriaColor)))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButtonBlau)
-                    .addComponent(jRadioButtonVermell)
-                    .addComponent(jRadioButtonVerd))
+                .addGap(55, 55, 55)
+                .addComponent(jButtonTriaColor)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -330,41 +313,41 @@ public class Ex6 extends javax.swing.JFrame {
 
     private void jButtonGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGravarActionPerformed
         // TODO add your handling code here:
+
         String textAGravar = jTextAreaFitxer.getText().trim();
+        JFileChooser fc = new JFileChooser();
+        int seleccio = fc.showSaveDialog(this);
+        File fitxer = null;
 
-        if (textAGravar.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "No hi ha dades per gravar.", "Atenció", JOptionPane.WARNING_MESSAGE);
-        } else {
-            try (java.util.Formatter f = new java.util.Formatter("usuaris.txt")) {
-                f.format("%s\n------------------\n", textAGravar);
-                JOptionPane.showMessageDialog(this, "Dades guardades correctament al fitxer 'usuaris.txt'!", "Èxit", JOptionPane.INFORMATION_MESSAGE);
-                jTextAreaFitxer.setText("");
+        if (seleccio == JFileChooser.APPROVE_OPTION) {
+            fitxer = fc.getSelectedFile();
 
-            } catch (java.io.FileNotFoundException error) {
-                JOptionPane.showMessageDialog(this, "Error de fitxer: No s'ha pogut crear o trobar l'arxiu. Detall: " + error.getMessage(), "Error Crític", JOptionPane.ERROR_MESSAGE);
+            if (textAGravar.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "No hi ha dades per gravar.", "Atenció", JOptionPane.WARNING_MESSAGE);
+            } else {
+                try (java.util.Formatter f = new java.util.Formatter(fitxer)) {
+                    f.format("%s\n------------------\n", textAGravar);
+                    JOptionPane.showMessageDialog(this, "Dades guardades correctament al fitxer 'usuaris.txt'!", "Èxit", JOptionPane.INFORMATION_MESSAGE);
+                    jTextAreaFitxer.setText("");
+
+                } catch (java.io.FileNotFoundException error) {
+                    JOptionPane.showMessageDialog(this, "Error de fitxer: No s'ha pogut crear o trobar l'arxiu. Detall: " + error.getMessage(), "Error Crític", JOptionPane.ERROR_MESSAGE);
+                }
             }
         }
+
+
     }//GEN-LAST:event_jButtonGravarActionPerformed
-
-    private void jRadioButtonVermellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonVermellActionPerformed
-        // TODO add your handling code here:
-        actualitzarText();
-    }//GEN-LAST:event_jRadioButtonVermellActionPerformed
-
-    private void jRadioButtonVerdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonVerdActionPerformed
-        // TODO add your handling code here:
-        actualitzarText();
-    }//GEN-LAST:event_jRadioButtonVerdActionPerformed
-
-    private void jRadioButtonBlauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonBlauActionPerformed
-        // TODO add your handling code here:
-        actualitzarText();
-    }//GEN-LAST:event_jRadioButtonBlauActionPerformed
 
     private void jCheckBoxCursivaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxCursivaActionPerformed
         // TODO add your handling code here:
         actualitzarText();
     }//GEN-LAST:event_jCheckBoxCursivaActionPerformed
+
+    private void jButtonTriaColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTriaColorActionPerformed
+        // TODO add your handling code here:
+        actualitzarText();
+    }//GEN-LAST:event_jButtonTriaColorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -394,6 +377,7 @@ public class Ex6 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButtonGravar;
+    private javax.swing.JButton jButtonTriaColor;
     private javax.swing.JButton jButtonValidar;
     private javax.swing.JCheckBox jCheckBoxCursiva;
     private javax.swing.JCheckBox jCheckBoxNegreta;
@@ -407,9 +391,6 @@ public class Ex6 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPasswordField jPasswordFieldPwd;
-    private javax.swing.JRadioButton jRadioButtonBlau;
-    private javax.swing.JRadioButton jRadioButtonVerd;
-    private javax.swing.JRadioButton jRadioButtonVermell;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
