@@ -24,11 +24,11 @@ public class Ex6 extends javax.swing.JFrame {
     private void actualitzarText() {
 
         if (jRadioButtonVermell.isSelected()) {
-            jTextArea1.setForeground(java.awt.Color.RED);
+            jTextAreaBotons.setForeground(java.awt.Color.RED);
         } else if (jRadioButtonBlau.isSelected()) {
-            jTextArea1.setForeground(java.awt.Color.BLUE);
+            jTextAreaBotons.setForeground(java.awt.Color.BLUE);
         } else if (jRadioButtonVerd.isSelected()) {
-            jTextArea1.setForeground(java.awt.Color.GREEN);
+            jTextAreaBotons.setForeground(java.awt.Color.GREEN);
         }
 
         int estil = java.awt.Font.PLAIN;
@@ -41,8 +41,8 @@ public class Ex6 extends javax.swing.JFrame {
             estil = java.awt.Font.ITALIC;
         }
 
-        java.awt.Font fontActual = jTextArea1.getFont();
-        jTextArea1.setFont(new java.awt.Font(fontActual.getName(), estil, fontActual.getSize()));
+        java.awt.Font fontActual = jTextAreaBotons.getFont();
+        jTextAreaBotons.setFont(new java.awt.Font(fontActual.getName(), estil, fontActual.getSize()));
     }
 
     /**
@@ -71,7 +71,7 @@ public class Ex6 extends javax.swing.JFrame {
         jButtonGravar = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jTextAreaBotons = new javax.swing.JTextArea();
         jRadioButtonBlau = new javax.swing.JRadioButton();
         jRadioButtonVermell = new javax.swing.JRadioButton();
         jRadioButtonVerd = new javax.swing.JRadioButton();
@@ -166,24 +166,28 @@ public class Ex6 extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Escriure el Fitxer", jPanel3);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setText("AAAAAAAAAAA");
-        jScrollPane1.setViewportView(jTextArea1);
+        jTextAreaBotons.setColumns(20);
+        jTextAreaBotons.setRows(5);
+        jTextAreaBotons.setText("AAAAAAAAAAA");
+        jScrollPane1.setViewportView(jTextAreaBotons);
 
         buttonGroup1.add(jRadioButtonBlau);
         jRadioButtonBlau.setText("Blau");
+        jRadioButtonBlau.addActionListener(this::jRadioButtonBlauActionPerformed);
 
         buttonGroup1.add(jRadioButtonVermell);
         jRadioButtonVermell.setText("Vermell");
+        jRadioButtonVermell.addActionListener(this::jRadioButtonVermellActionPerformed);
 
         buttonGroup1.add(jRadioButtonVerd);
         jRadioButtonVerd.setText("Verd");
+        jRadioButtonVerd.addActionListener(this::jRadioButtonVerdActionPerformed);
 
         jCheckBoxNegreta.setText("Negreta");
         jCheckBoxNegreta.addActionListener(this::jCheckBoxNegretaActionPerformed);
 
         jCheckBoxCursiva.setText("Cursiva");
+        jCheckBoxCursiva.addActionListener(this::jCheckBoxCursivaActionPerformed);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -286,6 +290,7 @@ public class Ex6 extends javax.swing.JFrame {
 
     private void jCheckBoxNegretaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxNegretaActionPerformed
         // TODO add your handling code here:
+        actualitzarText();
     }//GEN-LAST:event_jCheckBoxNegretaActionPerformed
 
     private void jButtonValidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonValidarActionPerformed
@@ -307,7 +312,7 @@ public class Ex6 extends javax.swing.JFrame {
             missatgeError += "- Contrasenya no vàlida.\n";
         }
 
-        if (nif.matches("\\d{8}[A-Za-z]")) {
+        if (!nif.matches("\\d{8}[A-Za-z]")) {
             valid = false;
             missatgeError += "- El NIF no té el format vàlid.\n";
         }
@@ -328,7 +333,7 @@ public class Ex6 extends javax.swing.JFrame {
         String textAGravar = jTextAreaFitxer.getText().trim();
 
         if (textAGravar.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "No hi ha dades per gravar. Si us plau, valida un usuari primer.", "Atenció", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "No hi ha dades per gravar.", "Atenció", JOptionPane.WARNING_MESSAGE);
         } else {
             try (java.util.Formatter f = new java.util.Formatter("usuaris.txt")) {
                 f.format("%s\n------------------\n", textAGravar);
@@ -340,6 +345,26 @@ public class Ex6 extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jButtonGravarActionPerformed
+
+    private void jRadioButtonVermellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonVermellActionPerformed
+        // TODO add your handling code here:
+        actualitzarText();
+    }//GEN-LAST:event_jRadioButtonVermellActionPerformed
+
+    private void jRadioButtonVerdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonVerdActionPerformed
+        // TODO add your handling code here:
+        actualitzarText();
+    }//GEN-LAST:event_jRadioButtonVerdActionPerformed
+
+    private void jRadioButtonBlauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonBlauActionPerformed
+        // TODO add your handling code here:
+        actualitzarText();
+    }//GEN-LAST:event_jRadioButtonBlauActionPerformed
+
+    private void jCheckBoxCursivaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxCursivaActionPerformed
+        // TODO add your handling code here:
+        actualitzarText();
+    }//GEN-LAST:event_jCheckBoxCursivaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -388,7 +413,7 @@ public class Ex6 extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextAreaBotons;
     private javax.swing.JTextArea jTextAreaFitxer;
     private javax.swing.JTextField jTextFieldNif;
     private javax.swing.JTextField jTextFieldNom;
