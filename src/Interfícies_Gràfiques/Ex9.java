@@ -277,7 +277,7 @@ public class Ex9 extends javax.swing.JFrame {
                 i++;
             }
             
-            String estat = "Estat: " + numElements + " a la taula - Total unitats: " + total;
+            String estat = "Estat: " + numElements + " comanda/es a la taula - Total unitats: " + total;
             jLabelEstat.setText(estat);
         } else {
             JOptionPane.showMessageDialog(this, "Selecciona un element de la llista.");
