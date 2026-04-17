@@ -83,6 +83,7 @@ public class Ex9 extends javax.swing.JFrame {
         jButtonResum.setText("Resum");
         jButtonResum.addActionListener(this::jButtonResumActionPerformed);
 
+        jButtonNetejar.setBackground(new java.awt.Color(255, 153, 153));
         jButtonNetejar.setText("Netejar");
         jButtonNetejar.addActionListener(this::jButtonNetejarActionPerformed);
 
