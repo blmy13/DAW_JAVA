@@ -4,9 +4,9 @@ import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 public class ExAcademia extends javax.swing.JFrame {
-    
+
     DefaultListModel<String> modelLlista = new DefaultListModel<>();
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ExAcademia.class.getName());
 
     /**
@@ -38,6 +38,7 @@ public class ExAcademia extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         chkOficial = new javax.swing.JCheckBox();
         btnMatricular = new javax.swing.JButton();
+        btnComptar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         lstAlumnes = new javax.swing.JList<>();
@@ -67,6 +68,9 @@ public class ExAcademia extends javax.swing.JFrame {
         btnMatricular.setText("Matricular");
         btnMatricular.addActionListener(this::btnMatricularActionPerformed);
 
+        btnComptar.setText("Comptar");
+        btnComptar.addActionListener(this::btnComptarActionPerformed);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -83,19 +87,24 @@ public class ExAcademia extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmbIdioma, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(rdbBasic)
-                        .addGap(18, 18, 18)
-                        .addComponent(rdbAvançat))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(chkOficial))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnMatricular)
-                        .addGap(52, 52, 52)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnMatricular)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(18, 18, 18)
+                                .addComponent(rdbBasic)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(rdbAvançat))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnComptar)))))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,8 +126,11 @@ public class ExAcademia extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(chkOficial))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
-                .addComponent(btnMatricular))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnMatricular)
+                    .addComponent(btnComptar))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 204, 204));
@@ -138,7 +150,7 @@ public class ExAcademia extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 38, Short.MAX_VALUE))
+                .addGap(0, 33, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -163,7 +175,7 @@ public class ExAcademia extends javax.swing.JFrame {
         // TODO add your handling code here:
         String nom = txtNom.getText().trim();
         boolean oficial = chkOficial.isSelected();
-        
+
         if (nom.isEmpty()) {
             JOptionPane.showMessageDialog(this, "El nom està buit");
         } else {
@@ -175,18 +187,40 @@ public class ExAcademia extends javax.swing.JFrame {
             } else {
                 nivell = "Bàsic";
             }
-            
-            String linia = nom + " - " + idioma + " - (" + nivell +")" + " - " + ofi;
-                    
+
+            String linia = nom + " - " + idioma + " - (" + nivell + ")" + " - " + ofi;
+
             modelLlista.addElement(linia);
-            
+
             txtNom.setText("");
             chkOficial.setSelected(false);
             rdbBasic.setSelected(true);
             cmbIdioma.setSelectedIndex(0);
         }
-                
+
     }//GEN-LAST:event_btnMatricularActionPerformed
+
+    private void btnComptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComptarActionPerformed
+        // TODO add your handling code here:
+        int contAng = 0;
+        int contFr = 0;
+        int contGer = 0;
+        int num = modelLlista.getSize();
+
+        for (int i = 0; i < num; i++) {
+            String linia = modelLlista.getElementAt(i);
+
+            if (linia.contains("Anglès")) {
+                contAng++;
+            } else if (linia.contains("Francès")) {
+                contFr++;
+            } else if (linia.contains("Alemany")) {
+                contGer++;
+            }
+        }
+
+        JOptionPane.showMessageDialog(this, "Recompte:\n- Anglès: " + contAng + "\n- Francès: " + contFr + "\n- Alemany: " + contGer);
+    }//GEN-LAST:event_btnComptarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -214,6 +248,7 @@ public class ExAcademia extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnComptar;
     private javax.swing.JButton btnMatricular;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JCheckBox chkOficial;
