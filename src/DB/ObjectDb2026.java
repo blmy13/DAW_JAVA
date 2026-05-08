@@ -16,16 +16,15 @@ public class ObjectDb2026 {
 
         TypedQuery<Double> q2 = em.createQuery("SELECT AVG(p.x) FROM Punt p", double.class); //consulta
         TypedQuery<Punt> query = em.createQuery("SELECT p FROM Punt p", Punt.class);
-        List<Punt>resultats = query.getResultList();
+        List<Punt> resultats = query.getResultList();
 
-       System.out.println("Mitjana X : " + q2.getSingleResult());
+        System.out.println("Mitjana X : " + q2.getSingleResult());
         resultats.forEach(System.out::println);
 
 //        for (int i = 0; i < 1000; i++) {
 //            Punt p = new Punt(i, i);
 //            em.persist(p);
 //        }
-
         em.getTransaction().commit();
         em.close();
         emf.close();
