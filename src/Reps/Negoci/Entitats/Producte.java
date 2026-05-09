@@ -1,5 +1,7 @@
 package Reps.Negoci.Entitats;
 
+import java.util.function.UnaryOperator;
+
 public class Producte {
     private String nom;
     private double preu;
@@ -29,6 +31,10 @@ public class Producte {
         }
         this.nom = nom;
         this.preu = preu;
+    }
+    //principi OCP
+    public double getPreuFinal(UnaryOperator<Double> estrategia) {
+        return estrategia.apply(preu);
     }
 
     @Override
