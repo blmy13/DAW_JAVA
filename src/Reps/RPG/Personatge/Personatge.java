@@ -8,8 +8,10 @@ public class Personatge {
 
     private String nom;
     private int nivell = 1;
-    private double hp = 100.0;
-    private double hpMax = 100.0;
+    protected double hp = 100.0;
+    protected double hpMax = 100.0;
+    private double exp = 0;
+    private double expNecessaria = 100;
     private Arma arma;
 
     public Personatge(String nom) {
@@ -45,7 +47,7 @@ public class Personatge {
     }
 
     public void curar(double quantitat) {
-       this.hp = Math.min(this.hp + quantitat, this.hpMax);
+        this.hp = Math.min(this.hp + quantitat, this.hpMax);
     }
 
     public Arma getArma() {
@@ -54,8 +56,8 @@ public class Personatge {
 
     public void equiparArma(Arma novaArma) {
         this.arma = novaArma;
-        System.out.println(this.nom + " ha equipat: " + arma.getNom());
     }
+
     public double atacar(Personatge enemic) {
         double danyBase = (this.arma == null) ? 5 : arma.getDanyBase();
 
@@ -74,5 +76,25 @@ public class Personatge {
             enemic.rebreDany(danyBase);
             return danyBase;
         }
+    }
+
+    public void guanyarExp(double quantitat) {
+        this.exp += quantitat;
+
+        while (this.exp >= this.expNecessaria) {
+            pujarNivell();
+        }
+    }
+
+    protected void pujarNivell() {
+        this.exp -= this.expNecessaria;
+        this.nivell++;
+        this.hpMax += 20;
+        this.hp = this.hpMax;
+        this.expNecessaria = this.expNecessaria * 1.5;
+
+        System.out.println("\n <<< LEVEL UP >>>");
+        System.out.println(this.nom + " ha pujat a nivell " + this.nivell + "!!");
+        System.out.println("La vida de + " + this.nom + " ha augmentat a " + this.hpMax + " i es restaura!!");
     }
 }
