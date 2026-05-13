@@ -1,0 +1,30 @@
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-05-13 16:04:31 #1 store] 
+Database '/home/abarthel.daw1r25/NetBeansProjects/DAW_JAVA/jar/db/punts.odb' is opened by 8464@a205-29-240920
+
+[2026-05-13 16:04:31 #2 store] 
+Configuration path: ?
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-05-13 16:05:07 #1 store] 
+Database '/home/abarthel.daw1r25/NetBeansProjects/DAW_JAVA/jar/db/punts.odb' has been recovered (tr. 1-2)
+
+[2026-05-13 16:05:07 #2 store] 
+Database '/home/abarthel.daw1r25/NetBeansProjects/DAW_JAVA/jar/db/punts.odb' is opened by 8656@a205-29-240920
+
+[2026-05-13 16:05:07 #3 store] 
+Configuration path: ?
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-05-13 16:05:29 #1 store] 
+Database '/home/abarthel.daw1r25/NetBeansProjects/DAW_JAVA/jar/db/punts.odb' is opened by 8750@a205-29-240920
+
+[2026-05-13 16:05:29 #2 store] 
+Configuration path: ?
+
+[2026-05-13 16:06:07 #3 type] 
+Type DB.Alumne.Alumne is not enhanced.
+

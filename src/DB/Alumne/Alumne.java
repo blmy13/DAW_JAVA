@@ -64,6 +64,6 @@ public class Alumne implements Serializable {
 
     @Override
     public String toString() {
-        return String.format("ID: %-7d | ALUMNE: %-12s | EDAT: %-2d | NOTA FINAL: %-4.2f%n", this.id, this.nom, this.edat, this.notaFinal);
+        return String.format("ID: %-3d | ALUMNE: %-12s | EDAT: %-2d | NOTA FINAL: %-4.2f%n", this.id, this.nom, this.edat, this.notaFinal);
     }
 }
