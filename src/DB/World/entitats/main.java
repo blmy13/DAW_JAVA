@@ -50,4 +50,29 @@ public class main {
         System.out.println("Nombre de països: " + query);
         System.out.println("Població mundial: " + query2);
     }
+    public void llistarIdNomPais() {
+        TypedQuery<Object[]> query = em.createNamedQuery("Country.getIdAndName", Object[].class);
+        List<Object[]> result = query.getResultList();
+        for (Object[] fila : result) {
+            String id = (String) fila[0];
+            String nom = (String) fila[1];
+            
+            System.out.println("ID: " + id + " | NOM: " + nom);
+        }
+        
+    }
+    public void ordenarPoblacioEuropa() {
+        TypedQuery<Country> query = em.createNamedQuery("Country.getEuropePopulationRank", Country.class);
+        List<Country> paisos = query.getResultList();
+        paisos.forEach(p -> System.out.println(">> PAÍS: " + p.getName() + " | POBLACIÓ: " + p.getPopulation()));
+    }
+    
+    public void llistarRegionsGrans(){
+        TypedQuery<RegionsFiveCountriesDTO> query = em.createNamedQuery("Country.getRegionsFiveCountries", RegionsFiveCountriesDTO.class);
+        List<RegionsFiveCountriesDTO> paisos = query.getResultList();
+        
+        System.out.println("Regions amb més de 5 països");
+        paisos.forEach(p -> System.out.println(">> " + p.getName()));
+    }
+   
 }
