@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-  <persistence-unit name="AlumnesPU" transaction-type="RESOURCE_LOCAL">
+  <persistence-unit name="world" transaction-type="RESOURCE_LOCAL">
     <provider>com.objectdb.jpa.Provider</provider>
-    <class>DB.Alumne.Alumne</class>
+    <class>DB.World.entitats.Border</class>
+    <class>DB.World.entitats.City</class>
+    <class>DB.World.entitats.Country</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="$objectdb/db/punts.odb"/>
+      <property name="javax.persistence.jdbc.url" value="$objectdb/db/World.odb"/>
     </properties>
   </persistence-unit>
 </persistence>

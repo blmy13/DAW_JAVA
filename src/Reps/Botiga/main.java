@@ -13,6 +13,15 @@ public class main {
     public static void main(String[] args) {
         Map<String, Venda> cataleg = getCataleg();
 
+        double valorTotal = cataleg.values().stream()
+                .mapToDouble(Venda::getPreu)
+                .sum();
+
+        System.out.println("\n<<< OFERTES >>>");
+        cataleg.values().stream()
+                .filter(a -> a.getPreu() < 500)
+                .forEach(a -> System.out.println("  >> " + a.getNomArticle() + " a " + a.getPreu() + "€"));
+
         System.out.println("Quin Article vols comprar?");
         String nomCerca = sc.nextLine();
         if (cataleg.get(nomCerca) != null) {

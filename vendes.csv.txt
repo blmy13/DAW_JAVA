@@ -1,0 +1,10 @@
+Wii Sports;Wii;82.90
+Super Mario Bros;NES;40.24
+Mario Kart 8 Deluxe;Switch;53.79
+Pokemon Red/Blue;GB;31.37
+Tetris;GB;30.26
+Minecraft;PC;33.15
+Grand Theft Auto V;PS4;19.39
+The Legend of Zelda: Breath of the Wild;Switch;29.81
+Elden Ring;PC;20.50
+God of War;PS4;19.50
