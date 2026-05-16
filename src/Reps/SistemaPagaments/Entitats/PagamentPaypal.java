@@ -21,6 +21,11 @@ public class PagamentPaypal implements EstrategiaPagament {
         System.out.println("Processant pagament de " + quantitat + "€ via PayPal pel compte " + this.correuElectronic);
     }
 
+    @Override
+    public String obtenirDadesPersistencia() {
+        return "PAYPAL;" + this.correuElectronic;
+    }
+
     public String getCorreuElectronic() {
         return correuElectronic;
     }

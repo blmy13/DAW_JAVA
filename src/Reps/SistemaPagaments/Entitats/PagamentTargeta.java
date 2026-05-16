@@ -42,4 +42,9 @@ public class PagamentTargeta implements EstrategiaPagament {
     public void processarPagament(double quantitat) throws PagamentInvalidException {
         System.out.println("Cobrant " + quantitat + "€ a la targeta " + obtenirTargetaOculta());
     }
+
+    @Override
+    public String obtenirDadesPersistencia() {
+        return "TARGETA;" + this.numeroTargeta + ";" + this.titular;
+    }
 }

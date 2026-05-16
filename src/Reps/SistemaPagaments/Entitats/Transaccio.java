@@ -2,7 +2,7 @@ package Reps.SistemaPagaments.Entitats;
 
 public class Transaccio {
     private double importTransaccio;
-    private  EstrategiaPagament estrategia;
+    private EstrategiaPagament estrategia;
 
     public Transaccio(double importTransaccio, EstrategiaPagament estrategia) {
         this.importTransaccio = importTransaccio;
@@ -11,6 +11,11 @@ public class Transaccio {
 
     public double getImportTransaccio() {
         return importTransaccio;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Transacció [Import: %.2f€, Mètode: %s]", this.importTransaccio, this.estrategia.getClass().getSimpleName());
     }
 
     public EstrategiaPagament getEstrategia() {

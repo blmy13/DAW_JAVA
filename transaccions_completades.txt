@@ -1,0 +1,9 @@
+ >> Transacció OK:     100,00€ processada correctament.
+ >> Transacció OK:     750,00€ processada correctament.
+ >> Transacció OK:     444,00€ processada correctament.
+ >> Transacció OK:     100,00€ processada correctament.
+ >> Transacció OK:     750,00€ processada correctament.
+ >> Transacció OK:     444,00€ processada correctament.
+ >> Transacció OK:     100,00€ processada correctament.
+ >> Transacció OK:     750,00€ processada correctament.
+ >> Transacció OK:     444,00€ processada correctament.
