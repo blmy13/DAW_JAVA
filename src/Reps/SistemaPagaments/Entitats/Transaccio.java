@@ -5,6 +5,9 @@ public class Transaccio {
     private EstrategiaPagament estrategia;
 
     public Transaccio(double importTransaccio, EstrategiaPagament estrategia) {
+        if (importTransaccio < 0) {
+            throw new IllegalArgumentException("L'import no pot ser negatiu");
+        }
         this.importTransaccio = importTransaccio;
         this.estrategia = estrategia;
     }
