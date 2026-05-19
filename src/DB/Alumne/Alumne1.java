@@ -11,7 +11,7 @@ import javax.persistence.NamedQuery;
 //consulta multiple retorna array d'obj
 
 @Entity
-public class Alumne implements Serializable {
+public class Alumne1 implements Serializable {
     
     @Id
     @GeneratedValue
@@ -20,10 +20,10 @@ public class Alumne implements Serializable {
     private int edat;
     private double notaFinal;
     
-    public Alumne(){
+    public Alumne1(){
     }
 
-    public Alumne(Long id, String nom, int edat, double notaFinal) {
+    public Alumne1(Long id, String nom, int edat, double notaFinal) {
         this.id = id;
         this.nom = nom;
         this.edat = edat;

@@ -31,7 +31,7 @@ public class AlumneMain {
         double nota = sc.nextDouble();
         sc.nextLine();
 
-        Alumne a = new Alumne(null, nom, edat, nota);
+        Alumne1 a = new Alumne1(null, nom, edat, nota);
         em.getTransaction().begin();
         em.persist(a);
         em.getTransaction().commit();
@@ -41,8 +41,8 @@ public class AlumneMain {
 
     public void llistarAlumnes() {
         System.out.println("\n <<< Alumnes Registrats >>>");
-        TypedQuery<Alumne> query = em.createNamedQuery("Alumne.findAll", Alumne.class);
-        List<Alumne> llista = query.getResultList();
+        TypedQuery<Alumne1> query = em.createNamedQuery("Alumne.findAll", Alumne1.class);
+        List<Alumne1> llista = query.getResultList();
 
         if (llista.isEmpty()) {
             System.out.println("No hi ha alumnes registrats.");
@@ -57,7 +57,7 @@ public class AlumneMain {
         long id = sc.nextLong();
         sc.nextLine();
 
-        Alumne a = em.find(Alumne.class, id);
+        Alumne1 a = em.find(Alumne1.class, id);
         if (a != null) {
             em.getTransaction().begin();
             em.remove(a);
@@ -74,7 +74,7 @@ public class AlumneMain {
         long id = sc.nextLong();
         sc.nextLine();
 
-        Alumne a = em.find(Alumne.class, id);
+        Alumne1 a = em.find(Alumne1.class, id);
 
         if (a != null) {
             System.out.println("Nova nota per a " + a.getNom() + ":");
