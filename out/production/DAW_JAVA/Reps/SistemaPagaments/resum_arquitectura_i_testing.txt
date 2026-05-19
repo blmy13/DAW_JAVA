@@ -1,0 +1,168 @@
+======================================================================
+RESUM D'ESTUDI: ARQUITECTURA DE CLASSES, RESPONSABILITATS I TESTING
+======================================================================
+Aquest document serveix com a guia de revisió ràpida abans d'estudiar.
+Conté el mapa de responsabilitats del projecte, els conceptes clau 
+apresos de testing unitari (JUnit 5 + Mockito) i els codis finals.
+
+----------------------------------------------------------------------
+1. DIAGRAMA TEXTUAL DE RESPONSABILITATS (ARQUITECTURA)
+----------------------------------------------------------------------
+
+   +-------------------------------------------------------+
+   |                 ProcessadorPagaments                  |
+   |  (El "Cervell" de l'aplicació - Classe de Negoci)      |
+   +-------------------------------------------------------+
+   | Responsabilitat:                                      |
+   |  - Coordinar el flux de la compra.                    |
+   |  - Validar les dades abans de processar.              |
+   |  - Delegar el pagament real a l'estratègia.           |
+   |  - Demanar al DAO que guardi el resultat.             |
+   +-------------------------------------------------------+
+         |                                           |
+         | (Depèn de / Injectat via constructor)     | (Depèn de / Injectat)
+         v                                           v
++-----------------------+                 +-----------------------+
+|   EstrategiaPagament  |                 |     TransaccioDAO     |
+|      (Interfície)     |                 |      (Interfície)     |
++-----------------------+                 +-----------------------+
+| Responsabilitat:      |                 | Responsabilitat:      |
+|  - Defineix el CONTRACTE|               |  - Contracte per a l'ac-|
+|    per fer el pagament|                 |    cés a dades (BD).  |
++-----------------------+                 +-----------------------+
+         ^                                           ^
+         | (Implementen)                             | (Implementa)
++-----------------------+                 +-----------------------+
+|    PagamentPaypal     |                 |    TransaccioBDDAO    |
+|    PagamentTargeta    |                 | (Classe real que es   |
+| (Detalls de passarel·la)                |  connecta a MySQL)    |
++-----------------------+                 +-----------------------+
+
+       * ON REU_ LA TRANSACCIÓ? *
+       La classe 'Transaccio' és una ENTITAT (un objecte que conté les
+       dades: import i estratègia). El Processador la rep com a paràmetre
+       en el mètode 'executarCompra(Transaccio t)'.
+
+----------------------------------------------------------------------
+2. CONCEPTES CLAU DE TESTING UNITARI
+----------------------------------------------------------------------
+
+A) El Patró AAA (L'estructura universal d'un test):
+   - Arrange (Preparació): Es creen els objectes, variables i entorns de
+     prova (per exemple, els objectes falsos o Mocks).
+   - Act (Execució): Es crida exactament al mètode real que es vol provar.
+   - Assert (Comprovació): Es verifica que el resultat hagi estat el que
+     s'esperava utilitzant assercions (assertEquals, assertNotNull...).
+
+B) Cicle TDD (Test-Driven Development):
+   1. Vermell (Red): Escrius un test per a una norma de negoci que encara
+      no està programada i veus que falla.
+   2. Verd (Green): Escrius el codi de producció mínim indispensable per a
+      fer que el test passi.
+   3. Refactoritzar (Refactor): Neteges i millores el codi sense trencar
+      el test verd.
+
+C) Mocking (Dobles de risc amb Mockito):
+   - Una prova unitària MAI s'ha de connectar a una base de dades real (BD).
+   - Un MOCK és un objecte fals creat per Mockito que imita una interfície.
+   - No obre connexions. Només té una "llibreta secreta" on apunta quins 
+     mètodes han cridat i amb quins paràmetres.
+
+----------------------------------------------------------------------
+3. TOTS ELS CODIS DE TEST CONSOLIDATS
+----------------------------------------------------------------------
+
+======================================================================
+A) TESTS UNITARIS DE L'ENTITAT (TransaccioTest.java)
+======================================================================
+Comprova la lògica interna de la creació d'una transacció i les seves
+validacions de seguretat (el porter de la discoteca).
+
+import Reps.SistemaPagaments.Entitats.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class TransaccioTest {
+
+    @Test
+    public void testCreacioTransaccioCorrecta() {
+        // Arrange
+        EstrategiaPagament mockPaypal = new PagamentPaypal("test@gmail.com");
+        
+        // Act
+        Transaccio t = new Transaccio(150.50, mockPaypal);
+        
+        // Assert
+        assertEquals(150.50, t.getImportTransaccio(), "L'import hauria de ser 150.50");
+        assertNotNull(t.getEstrategia(), "L'estratègia no hauria de ser nul·la");
+    }
+
+    @Test
+    public void testCreacioTransaccioIncorrectaLlançaExcepcio() {
+        // Arrange
+        EstrategiaPagament mockPayPal = new PagamentPaypal("test1@gmail.com");
+
+        // Act & Assert (Es comprova que es llança l'excepció de control)
+        Exception excepcio = assertThrows(IllegalArgumentException.class, () -> {
+            new Transaccio(-40.0, mockPayPal);
+        });
+
+        assertEquals("L'import no pot ser negatiu", excepcio.getMessage());
+    }
+}
+
+======================================================================
+B) TESTS DEL PROCESADOR AMB MOCKITO (ProcessadorPagamentsTest.java)
+======================================================================
+Comprova el "cervell" de l'aplicació aïllant-lo completament de la Base
+de Dades mitjançant l'ús de Mocks.
+
+import Reps.SistemaPagaments.DAO.*;
+import Reps.SistemaPagaments.Entitats.*;
+import org.junit.jupiter.api.Test;
+import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class ProcessadorPagamentsTest {
+
+    @Test
+    public void testExecutarCompraCridaAlDao() throws Exception {
+        // 1. ARRANGE
+        // Creem el DAO fals (mock) que simula la Base de Dades
+        TransaccioDAO mockDao = mock(TransaccioDAO.class);
+        EstrategiaPagament mockPaypal = new PagamentPaypal("test_mockito@gmail.com");
+        
+        // Injectem el mock i el mètode de pagament pel constructor
+        ProcessadorPagaments processador = new ProcessadorPagaments(mockPaypal, mockDao);
+        Transaccio transaccioProva = new Transaccio(100.0, mockPaypal);
+
+        // 2. ACT
+        processador.executarCompra(transaccioProva);
+
+        // 3. ASSERT
+        // Verifiquem amb Mockito que s'ha demanat al DAO guardar la transacció 1 vegada
+        verify(mockDao, times(1)).guardarTransaccio(transaccioProva);
+    }
+
+    @Test
+    public void testExecutarCompraAmbImportInvalidLlançaExcepcio() throws Exception {
+        // 1. ARRANGE
+        TransaccioDAO mockDao = mock(TransaccioDAO.class);
+        EstrategiaPagament mockPaypal = new PagamentPaypal("error@gmail.com");
+        ProcessadorPagaments processador = new ProcessadorPagaments(mockPaypal, mockDao);
+        
+        // Transacció invàlida de 0.0€ per fer saltar la validació
+        Transaccio transaccioInvalida = new Transaccio(0.0, mockPaypal);
+
+        // 2 & 3. ACT & ASSERT
+        // Es comprova que el processador llança l'excepció de negoci pròpia
+        assertThrows(PagamentInvalidException.class, () -> {
+            processador.executarCompra(transaccioInvalida);
+        });
+
+        // ASSERT DE SEGURETAT EXTRA
+        // Verifiquem que, en haver donat error, MAI s'ha demanat al DAO guardar res
+        verify(mockDao, never()).guardarTransaccio(any());
+    }
+}
+

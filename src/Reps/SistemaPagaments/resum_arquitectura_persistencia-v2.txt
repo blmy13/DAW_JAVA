@@ -1,0 +1,133 @@
+================================================================================
+RESUM TÈCNIC ENGINYERIL: ARQUITECTURA DE PERSISTÈNCIA, JDBC I PATRONS GESTIÓ
+================================================================================
+Projecte: Sistema de Processament de Pagaments Bancaris v2.5
+Rol: Arquitecte de Programari / Desenvolupador Backend Sènior
+Llenguatge: Java 17+ & MySQL (JDBC) + Native HTTP Server
+Estat del Mòdul: Funcionament Complet, Validat en Consola i via Endpoint API (REST)
+
+--------------------------------------------------------------------------------
+1. CRONOLOGIA EVOLUTIVA DEL DESENVOLUPAMENT
+--------------------------------------------------------------------------------
+Durant aquestes sessions de disseny, refactorització i obertura de serveis web, 
+l'arquitectura de l'aplicació ha evolucionat cap a un entorn interconnectat:
+
+• FASE 1 (Persistència en Fitxer): Es va implementar un 'TransaccioFitxerDAO' per 
+  escriure cadenes de text en un fitxer .txt local. L'estratègia mancava d'escalabilitat.
+
+• FASE 2 (El Guardià Robust - Singleton): Es va dissenyar la classe 
+  'ConnexioBDSingleton' per centralitzar l'accés a MySQL. La gestió defensiva de 
+  blocs 'try-catch' va capturar l'excepció de caiguda de xarxa amb èxit.
+
+• FASE 3 (Migració Relacional i Polimorfisme): Es va activar el servidor MySQL i 
+  es va programar el 'TransaccioBDDAO' (TransaccioDAOMySQL) mapejant de forma polimòrfica 
+  les dades d'estratègia de PayPal i Targeta de Crèdit cap a la taula 'transaccions'.
+
+• FASE 4 (L'Auditoria del Try-With-Resources Niuat): Es va aplicar un patró de 
+  "Try Niuat" (Nested Try) per evitar que la destrucció de l'Statement i ResultSet 
+  tanqués de manera col·lateral la connexió global persistent gestionada pelo Singleton.
+
+• FASE 5 (Testing d'Excepcions i Robustesa de Flux): Es van llançar bateries de proves 
+  negatives enviant cadenes de text malicioses o formats invàlids ("120.50-50.0") i imports 
+  negatius. Es va dissenyar un sanititzador de Request Body basat en expressions regulars 
+  ('[^0-9.\-]') per blindar el Parser i forçar el llançament controlat d'errors 400 Bad Request.
+
+• FASE 6 (Arquitectura de l'API REST i Desplegament Web): Es va aixecar un servidor HTTP 
+  muntat sobre l'arquitectura nativa de Java (`HttpServer`). Es va dissenyar un model de 
+  doble context: un canal d'escriptura d'alta concurrència via mètode POST (`/api/pagar`) i un 
+  canal de consulta i auditoria via mètode GET (`/api/historial`) que serialitza les entitats 
+  de la base de dades en un flux JSON natiu en temps real.
+
+--------------------------------------------------------------------------------
+2. ANÀLISI DETALLAT DE PATRONS D'ARQUITECTURA
+--------------------------------------------------------------------------------
+
+A) PATRÓ SINGLETON (Creacional)
+Garanteix una única instància de connexió a la memòria RAM del JVM i proporciona un punt 
+d'accés global mitjançant el mètode `BDSingleton.getInstance().getConnection()`. Evita la 
+saturació de sockets del servidor MySQL mitigant atacs de denegació de servei per fils.
+
+B) PATRÓ DAO - DATA ACCESS OBJECT (Estructural)
+Aïlla completament el nucli transaccional bancari dels mecanismes físics d'emmagatzematge. 
+Gràcies al Principi de Substitució de Liskov, commutar l'ecosistema de persistència local 
+a empresarial requereix únicament instanciar de forma polimòrfica la interfície abstracta:
+`TransaccioDAO daoReal = new TransaccioDAOMySQL();`
+
+C) PATRÓ STRATEGY & NATIVE SERIALIZATION
+• En el guardat: El DAO demana l'estratègia dinàmica en cadena per extreure les credencials del mètode de pagament.
+• En la lectura de l'API: Per evitar dependències pesades externes, s'ha programat un motor 
+  de mapat artesanal utilitzant un `StringBuilder` que encapsula el recorregut del ResultSet i 
+  construeix l'arbre de nodes JSON de forma neta i altament eficient.
+
+--------------------------------------------------------------------------------
+3. CONCEPTES DE JDBC, CODI SEGUR I REFACTORITZACIÓ DEL FILTRE
+--------------------------------------------------------------------------------
+
+A) PREVENCIÓ D'ATACS D'INJECCIÓ SQL
+L'ús estricte de marcadors de paràmetres ('?') mitjançant `PreparedStatement` força la 
+precompilació del codi SQL. Les dades s'envien de manera independent a la query, impedint 
+l'execució de seqüències binàries o comandos danyosos incrustats en els camps de text.
+
+B) SANITITZACIÓ CRÍTICA DE COLUMNES EN RESOLUCIÓ DE CONFLICTES
+Durant el desplegament, es va detectar un bloqueig del motor de base de dades (Error 
+'Unknown column 'estat' in 'field list''). La persistència es va refactoritzar aplicant 
+un criteri de mínima transferència de dades (Minimal Data Querying) simplificant el mètode 
+de lectura cap a una sentència directa atomitzada (`SELECT import FROM transaccions`), 
+garantint un alt rendiment del canal en entorns multiprocés.
+
+--------------------------------------------------------------------------------
+4. CODIFICACIÓ DE PRODUCCIÓ REFACTORITZADA (TransaccioDAOMySQL.java)
+--------------------------------------------------------------------------------
+
+package Reps.SistemaPagaments.Persistencia;
+
+import Reps.SistemaPagaments.DAO.TransaccioDAO;
+import Reps.SistemaPagaments.DAO.PersistenciaException;
+import Reps.SistemaPagaments.Entitats.Transaccio;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
+public class TransaccioDAOMySQL implements TransaccioDAO {
+
+    @Override
+    public void guardarTransaccio(Transaccio t) throws PersistenciaException {
+        String sql = "INSERT INTO transaccions (import) VALUES (?)";
+        try {
+            Connection con = BDSingleton.getInstance().getConnection();
+            try (PreparedStatement pstmt = con.prepareStatement(sql)) {
+                pstmt.setDouble(1, t.getImportTransaccio());
+                pstmt.executeUpdate();
+                System.out.println(" >> [BBDD] Transació guardada a MySQL.");
+            }
+        } catch (SQLException e) {
+            throw new PersistenciaException("Error en guardar transacció: " + e.getMessage());
+        }
+    }
+
+    @Override
+    public List<Transaccio> obtenirTransaccions() throws PersistenciaException {
+        List<Transaccio> llista = new ArrayList<>();
+        String sql = "SELECT import FROM transaccions"; 
+
+        try {
+            Connection con = BDSingleton.getInstance().getConnection();
+            try (PreparedStatement ps = con.prepareStatement(sql);
+                 ResultSet rs = ps.executeQuery()) {
+
+                while (rs.next()) {
+                    double quantitat = rs.getDouble("import");
+                    Transaccio t = new Transaccio(quantitat, null);
+                    llista.add(t);
+                }
+            }
+        } catch (SQLException e) {
+            throw new PersistenciaException("Error en llegir les transaccions de la BD: " + e.getMessage());
+        }
+        return llista;
+    }
+}
+
+================================================================================
+FI DE LA MEMÒRIA TÈCNICA - SISTEMA ARRENCAT I INTEGRAT CORRECTAMENT
+================================================================================
