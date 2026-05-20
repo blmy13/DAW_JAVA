@@ -1,0 +1,48 @@
+================================================================================
+RESUM TÈCNIC: ARQUITECTURA FUNCIONAL, LAMBDAS I STREAMS 
+================================================================================
+Projecte: Motor Antifrau
+Rol: Arquitecte de Neuroaprenentatge / Desenvolupador Sènior
+
+1. RESUM TEÒRIC
+--------------------------------------------------------------------------------
+- Interfícies Funcionals (@FunctionalInterface): Interfícies amb un únic mètode 
+  abstracte. Serveixen com a tipus de dada per a referenciar funcions (Lambdas).
+- Expressions Lambda: Funcions anònimes que permeten escriure codi més concís i 
+  passar comportament com a paràmetre.
+- Java Streams: API (java.util.stream) que permet processar seqüències d'elements 
+  de forma declarativa. No emmagatzema dades, sinó que aplica transformacions 
+  (.filter) i avaluacions (.anyMatch) sobre el flux de dades original.
+- Genèrics (<T>): Permeten escriure codi independent del tipus, aportant 
+  seguretat de tipus (Type Safety) en temps de compilació.
+
+2. CONTEXT D'APLICACIÓ I FUNCIONALITAT
+--------------------------------------------------------------------------------
+- ReglaFrau<T>: S'ha aplicat el genèric perquè el contracte d'avaluació pugui 
+  servir no només per a Transaccions, sinó per a Usuaris o Comptes en el futur. 
+  Aporta ALT DESACOBLAMENT i escalabilitat.
+- Lambdas al Main: En comptes de crear múltiples classes que implementin 
+  ReglaFrau, hem injectat la lògica directament (t -> t.getImport() > X). Això 
+  redueix codi boilerplate (innecessari) i compleix el Principi Open/Closed.
+- Streams al Motor: Hem eliminat els bucles for i ifs anidats utilitzant 
+  .filter i .anyMatch. Això millora dràsticament la llegibilitat i obre la porta 
+  al processament en paral·lel (parallelStream) de forma nativa.
+
+3. DIAGRAMA D'ARQUITECTURA
+--------------------------------------------------------------------------------
+   +-----------------------+              +-----------------------+
+   |      Transaccio       |              |   MotorAntifrau       |
+   | (Model de Dades/POJO) | <----------  | (Cervell Stateless)   |
+   +-----------------------+              +-----------------------+
+                                                      | 
+   +-----------------------+      (Filtra usant el contracte via Streams)
+   |     ReglaFrau<T>      | <------------------------+
+   |(@FunctionalInterface) | 
+   +-----------------------+ 
+               ^
+               | Implementació en temps d'execució
+   +-----------------------+
+   |         Main          | --> Injecta Lambdas (ex: t -> t.import > 10K)
+   |   (Punt d'Entrada)    | --> Passa la List<Transaccio>
+   +-----------------------+
+================================================================================
