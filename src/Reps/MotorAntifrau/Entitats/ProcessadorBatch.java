@@ -1,5 +1,7 @@
 package Reps.MotorAntifrau.Entitats;
 
+import Reps.MotorAntifrau.Entitats.Processadors.FabricaProcessadors;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -8,7 +10,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class ProcessadorBatch {
-    public void processarFitxer(String rutaOrigen, String rutaDesti, MotorAntifrau motor, List<ReglaFrau<Transaccio>> regles) {
+    public void processarFitxer(String rutaOrigen, String rutaDesti, MotorAntifrau motor, List<ReglaFrau<Transaccio>> regles, FabricaProcessadors fabrica) {
         Path pathOrigen = Paths.get(rutaOrigen);
         Path pathDesti = Paths.get(rutaDesti);
 
@@ -17,15 +19,19 @@ public class ProcessadorBatch {
             List<Transaccio> transaccionsLlegides = linies
                     .filter(linia -> !linia.isBlank())
                     .map(linia -> {
-                        String [] parts =linia.split(",");
-                        return new Transaccio(Double.parseDouble(parts[0]), parts[1]);
-
+                        String[] parts = linia.split(",");
+                        return new Transaccio(Double.parseDouble(parts[0]), parts[1], TipusTransaccio.valueOf(parts[2]));
                     })
                     .toList();
             //motor avalua
             System.out.println(">> Analitzant " + transaccionsLlegides.size() + " transaccions...");
             List<Transaccio> sospitoses = motor.analitzarTransaccions(transaccionsLlegides, regles);
-
+            List<Transaccio> valides = transaccionsLlegides.stream()
+                    .filter(t -> !sospitoses.contains(t))
+                    .toList();
+            valides.forEach(v -> {
+                fabrica.obtenirProcessador(v.getTipus()).processar(v);
+            });
             //persistència
             List<String> liniesAlerta = sospitoses.stream()
                     .map(Transaccio::toString)
