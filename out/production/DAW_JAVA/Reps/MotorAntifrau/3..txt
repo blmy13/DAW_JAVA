@@ -1,0 +1,44 @@
+================================================================================
+RESUM TÈCNIC: PATRÓ FACTORY, ENUMS I POLIMORFISME O(1)
+================================================================================
+Projecte: Motor Antifrau (Mòdul Processador)
+Rol: Arquitecte de Neuroaprenentatge / Desenvolupador Sènior
+
+1. RESUM TEÒRIC
+--------------------------------------------------------------------------------
+- Enums (Enumeracions): Tipus de dada que defineix un conjunt tancat de constants 
+  (ex: TARGETA, TRANSFERENCIA). Aporta Type Safety (Seguretat de Tipus) evitant 
+  errors tipogràfics en temps de compilació.
+- Patró Factory (Fàbrica): Patró de disseny creacional (o estructural, depenent 
+  de l'ús) que encapsula la lògica de creació o obtenció d'objectes.
+- Registre en Mapes (Diccionari): Utilitzar un HashMap<Clau, Interfície> per 
+  vincular un tipus a la seva implementació. Redueix la complexitat de cerca de 
+  O(N) (amb ifs/switches) a O(1) (accés directe).
+
+2. CONTEXT D'APLICACIÓ I FUNCIONALITAT
+--------------------------------------------------------------------------------
+- OCP (Open/Closed Principle): S'ha eliminat la necessitat d'utilitzar estructures
+  'switch' o 'if-else' per determinar com processar cada pagament. La classe 
+  ProcessadorBatch està TANCADA a la modificació. Si hi ha nous tipus de pagament, 
+  només s'ha d'afegir una nova classe i registrar-la a la Fàbrica (OBERT a extensió).
+- Polimorfisme d'Interfície: ProcessadorBatch només coneix la interfície general 
+  'ProcessadorEspecific'. Confia que la implementació retornada farà la seva feina 
+  en fer cridar a '.processar()'.
+
+3. DIAGRAMA D'ARQUITECTURA (EL FLUX D'ORQUESTRACIÓ)
+--------------------------------------------------------------------------------
+                              [ ProcessadorBatch ]
+                                       |
+    1. Què ets? (t.getTipus())         v 
+  ----------------------------> ( Transaccio )
+                                       |
+    2. Dóna'm el processador           v
+  ----------------------------> [ FabricaProcessadors ] (HashMap Intern)
+                                       |   - TARGETA -> ProcessadorTargeta
+                                       |   - CRIPTO -> ProcessadorCripto
+    3. Retorna Interfície              |
+  <------------------------------------+
+                                       |
+    4. .processar(t)                   v
+  ----------------------------> [ ProcessadorTargeta ] (Executa codi específic)
+================================================================================

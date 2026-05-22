@@ -1,0 +1,48 @@
+================================================================================
+RESUM TÈCNIC: DATA PIPELINE, LAZY EVALUATION I I/O ROBUST 
+================================================================================
+Projecte: Motor Antifrau (Mòdul Batch)
+Rol: Arquitecte de Neuroaprenentatge / Desenvolupador Sènior
+
+1. RESUM TEÒRIC
+--------------------------------------------------------------------------------
+- Lazy Evaluation (java.nio.file.Files.lines): Permet llegir arxius línia a línia 
+  com un Stream, evitant carregar tot l'arxiu a la memòria RAM (OutOfMemoryError). 
+  Ideal per a fitxers infinits o massius.
+- Transformació de Dades (.map): Operador d'Stream que rep un element d'un tipus 
+  (ex: String) i retorna un element d'un altre tipus (ex: Transaccio), creant 
+  un pont entre el text brut i el Model de Domini.
+- Gestió de Recursos (Try-with-resources): Ús de try(recurs) { ... } per assegurar 
+  el tancament automàtic de connexions o arxius (I/O), independentment de si el 
+  codi finalitza bé o llança una excepció. Protegeix contra "Memory Leaks" 
+  (fuites de memòria).
+
+2. CONTEXT D'APLICACIÓ I FUNCIONALITAT
+--------------------------------------------------------------------------------
+- Pipeline a ProcessadorBatch: S'ha dissenyat un mètode que llegeix dades, les 
+  filtra, les instància i delega la validació a un motor extern, complint el 
+  Principi de Responsabilitat Única (SRP).
+- Programació Defensiva: Filtrar línies buides abans del .map() evita caigudes 
+  fatals per NumberFormatException quan s'intenta parsejar text corrupte.
+
+3. DIAGRAMA D'ARQUITECTURA (CANONADA DE DADES)
+--------------------------------------------------------------------------------
+ [transaccions.csv] (Disc Dur)
+       |
+       v  (Files.lines + Try-with-resources)
+ [Stream<String>]
+       |
+       v  (.filter !isBlank) -> Evita línies buides
+       |
+       v  (.map) -> split(",") + new Transaccio(...)
+ [Stream<Transaccio>]
+       |
+       v  (.toList)
+ [List<Transaccio>] ---> [ MotorAntifrau ] ---> (Retorna List<Transaccio> Sospitoses)
+                                                       |
+                                                       v  (.map Transaccio::toString)
+                                                [Stream<String>]
+                                                       |
+                                                       v  (Files.write)
+                                              [alertes_frau.log] (Disc Dur)
+================================================================================

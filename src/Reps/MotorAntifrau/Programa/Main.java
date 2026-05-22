@@ -2,6 +2,7 @@ package Reps.MotorAntifrau.Programa;
 
 import Reps.MotorAntifrau.Entitats.MotorAntifrau;
 import Reps.MotorAntifrau.Entitats.ProcessadorBatch;
+import Reps.MotorAntifrau.Entitats.Processadors.FabricaProcessadors;
 import Reps.MotorAntifrau.Entitats.ReglaFrau;
 import Reps.MotorAntifrau.Entitats.Transaccio;
 
@@ -18,7 +19,8 @@ public class Main {
 
         MotorAntifrau motor = new MotorAntifrau();
         ProcessadorBatch proBatch = new ProcessadorBatch();
-        proBatch.processarFitxer("transaccions.csv", "alaertes_frau.log", motor, regles);
+        FabricaProcessadors fabrica = new FabricaProcessadors();
+        proBatch.processarFitxer("transaccions.csv", "alaertes_frau.log", motor, regles, fabrica);
 
     }
 

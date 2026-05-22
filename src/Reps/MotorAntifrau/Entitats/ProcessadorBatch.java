@@ -29,9 +29,8 @@ public class ProcessadorBatch {
             List<Transaccio> valides = transaccionsLlegides.stream()
                     .filter(t -> !sospitoses.contains(t))
                     .toList();
-            valides.forEach(v -> {
-                fabrica.obtenirProcessador(v.getTipus()).processar(v);
-            });
+            System.out.println(">> Processant pagaments legítims en paral·lel.");
+            valides.parallelStream().forEach(v -> fabrica.obtenirProcessador(v.getTipus()).processar(v));
             //persistència
             List<String> liniesAlerta = sospitoses.stream()
                     .map(Transaccio::toString)
