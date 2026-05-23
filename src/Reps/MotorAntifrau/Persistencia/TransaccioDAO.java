@@ -7,19 +7,16 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class TransaccioDAO {
+    private Connection con;
 
-    // Assumim que ja tens una forma d'obtenir la connexió (pots fer un mock o usar una classe fictícia de moment)
-    private Connection obtenirConnexio() throws SQLException {
-        // En un entorn real, això cridaria al teu BDSingleton
-        return null;
+    public TransaccioDAO(Connection connexio) {
+        this.con = connexio;
     }
 
     public void guardarTransaccionsBatch(List<Transaccio> valides) {
         String sql = "INSERT INTO pagaments_legitims (import, pais, tipus) VALUES (?, ?, ?)";
-        Connection con = null;
 
         try {
-            con = obtenirConnexio();
             // 1. desactivar auto commit
             con.setAutoCommit(false);
 
@@ -56,7 +53,6 @@ public class TransaccioDAO {
             if (con != null) {
                 try {
                     con.setAutoCommit(true);
-                    con.close();
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }

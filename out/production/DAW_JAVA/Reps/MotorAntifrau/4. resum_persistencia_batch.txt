@@ -1,0 +1,22 @@
+================================================================================
+RESUM TÈCNIC: PERSISTÈNCIA BATCH I TRANSACCIONS ATÒMIQUES (JDBC AVANÇAT)
+================================================================================
+Projecte: Motor Antifrau (Mòdul Base de Dades)
+Conceptes Clau: Batch Processing, Atomics (ACID), Manual Commits.
+
+1. PER QUÈ EN LLOC D'INSERTS INDIVIDUALS?
+--------------------------------------------------------------------------------
+- Insert Tradicional: 1 transacció = 1 viatge per xarxa + 1 obertura/tancament.
+  Complexitat temporal i de xarxa excessiva per a sistemes de Big Data.
+- Insert Batch: N transaccions = 1 sol viatge massiu. El PreparedStatement 
+  apila les dades en memòria (addBatch) i les envia en un sol paquet (executeBatch).
+
+2. LES TRES REGLES DE L'ATOMICITAT (ACID)
+--------------------------------------------------------------------------------
+1. con.setAutoCommit(false); -> Congela la base de dades. Cap canvi es fa 
+   públic fins que l'aplicació doni permís explícit.
+2. con.commit(); -> S'executa al final del bloc 'try'. Confirma que tot ha 
+   anat bé i desa els canvis de cop.
+3. con.rollback(); -> S'executa dins del bloc 'catch'. Si una sola línia del 
+   Batch falla, es desfan absolutament tots els canvis fets en aquesta sessió.
+================================================================================

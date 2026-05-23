@@ -1,6 +1,7 @@
 package Reps.MotorAntifrau.Entitats;
 
 import Reps.MotorAntifrau.Entitats.Processadors.FabricaProcessadors;
+import Reps.MotorAntifrau.Persistencia.TransaccioDAO;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -10,7 +11,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class ProcessadorBatch {
-    public void processarFitxer(String rutaOrigen, String rutaDesti, MotorAntifrau motor, List<ReglaFrau<Transaccio>> regles, FabricaProcessadors fabrica) {
+    public void processarFitxer(String rutaOrigen, String rutaDesti, MotorAntifrau motor, List<ReglaFrau<Transaccio>> regles, FabricaProcessadors fabrica, TransaccioDAO dao) {
         Path pathOrigen = Paths.get(rutaOrigen);
         Path pathDesti = Paths.get(rutaDesti);
 
@@ -32,6 +33,7 @@ public class ProcessadorBatch {
             System.out.println(">> Processant pagaments legítims en paral·lel.");
             valides.parallelStream().forEach(v -> fabrica.obtenirProcessador(v.getTipus()).processar(v));
             //persistència
+            dao.guardarTransaccionsBatch(valides);
             List<String> liniesAlerta = sospitoses.stream()
                     .map(Transaccio::toString)
                     .toList();
