@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
-  <persistence-unit name="InstitutPU" transaction-type="RESOURCE_LOCAL">
+  <persistence-unit name="EmpresaPU" transaction-type="RESOURCE_LOCAL">
     <provider>com.objectdb.jpa.Provider</provider>
     <properties>
       <property name="javax.persistence.jdbc.url" value="$objectdb/db/institut.odb"/>
