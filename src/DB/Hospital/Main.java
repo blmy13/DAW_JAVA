@@ -89,7 +89,7 @@ public class Main {
     }
     public static void buscarMetgesEspecialitat(String e, EntityManager em) {
 
-        TypedQuery<Metge> query = em.createQuery("SELECT m FROM Metge m WHERE m.Especialtitat = :esp", Metge.class);
+        TypedQuery<Metge> query = em.createQuery("SELECT m FROM Metge m WHERE m.especialitat = :esp", Metge.class);
         query.setParameter("esp", e);
         List<Metge> especialitats = query.getResultList();
         if (!especialitats.isEmpty()) {
