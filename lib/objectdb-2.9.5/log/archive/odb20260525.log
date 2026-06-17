@@ -1,0 +1,23 @@
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-05-25 21:58:41 #1 store] 
+Database 'D:\Users\Alex\Projects\lib\objectdb-2.9.5\db\institut.odb' is opened by 2064@DESKTOP-J35NOVC
+
+[2026-05-25 21:58:41 #2 store] 
+Configuration path: D:\Users\Alex\Projects\lib\objectdb-2.9.5\objectdb.conf
+
+[2026-05-25 21:58:41 #3 type] 
+Type DB.Institut.Ra is not enhanced.
+
+[2026-05-25 21:58:41 #4 type] 
+Type DB.Institut.Modul is not enhanced.
+
+[2026-05-25 21:58:41 #5 type] 
+Type DB.Institut.Nota is not enhanced.
+
+[2026-05-25 21:58:41 #6 type] 
+Type DB.Institut.Alumne is not enhanced.
+
+[2026-05-25 21:58:41 #7 store] 
+Database 'D:\Users\Alex\Projects\lib\objectdb-2.9.5\db\institut.odb' is closed by 2064@DESKTOP-J35NOVC
+

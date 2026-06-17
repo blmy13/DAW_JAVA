@@ -37,8 +37,7 @@ public class main {
         TypedQuery<String> query = em.createNamedQuery("Country.findCapital", String.class);
         try {
             query.setParameter("nom", nom);
-            String capital = query.getSingleResult();
-            return capital;
+            return query.getSingleResult();
         } catch (NoResultException e) {
             System.out.println(" >> ERROR; El país no s'ha trobat" + e.getMessage());
         }

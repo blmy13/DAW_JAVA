@@ -1,0 +1,57 @@
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-06-03 04:11:46 #1 store] 
+Database 'D:\Users\Alex\Projects\lib\objectdb-2.9.5\db\hospital.odb' is opened by 11884@DESKTOP-J35NOVC
+
+[2026-06-03 04:11:46 #2 store] 
+Configuration path: D:\Users\Alex\Projects\lib\objectdb-2.9.5\objectdb.conf
+
+[2026-06-03 04:11:47 #3 type] 
+Type DB.Hospital.Metge is not enhanced.
+
+[2026-06-03 04:11:47 #4 type] 
+Type DB.Hospital.Pacient is not enhanced.
+
+[2026-06-03 04:11:47 #5 type] 
+Type DB.Hospital.Hospital is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-06-03 04:13:28 #1 store] 
+Database 'D:\Users\Alex\Projects\lib\objectdb-2.9.5\db\hospital.odb' has been recovered (tr. 1-6)
+
+[2026-06-03 04:13:28 #2 store] 
+Database 'D:\Users\Alex\Projects\lib\objectdb-2.9.5\db\hospital.odb' is opened by 3484@DESKTOP-J35NOVC
+
+[2026-06-03 04:13:28 #3 store] 
+Configuration path: D:\Users\Alex\Projects\lib\objectdb-2.9.5\objectdb.conf
+
+[2026-06-03 04:13:28 #4 type] 
+Type DB.Hospital.Metge is not enhanced.
+
+[2026-06-03 04:13:28 #5 type] 
+Type DB.Hospital.Pacient is not enhanced.
+
+[2026-06-03 04:13:28 #6 type] 
+Type DB.Hospital.Hospital is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-06-03 04:14:48 #1 store] 
+Database 'D:\Users\Alex\Projects\lib\objectdb-2.9.5\db\hospital.odb' has been recovered (tr. 10-10)
+
+[2026-06-03 04:14:48 #2 store] 
+Database 'D:\Users\Alex\Projects\lib\objectdb-2.9.5\db\hospital.odb' is opened by 4780@DESKTOP-J35NOVC
+
+[2026-06-03 04:14:48 #3 store] 
+Configuration path: D:\Users\Alex\Projects\lib\objectdb-2.9.5\objectdb.conf
+
+[2026-06-03 04:14:48 #4 type] 
+Type DB.Hospital.Metge is not enhanced.
+
+[2026-06-03 04:14:48 #5 type] 
+Type DB.Hospital.Pacient is not enhanced.
+
+[2026-06-03 04:14:48 #6 type] 
+Type DB.Hospital.Hospital is not enhanced.
+

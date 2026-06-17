@@ -1,0 +1,45 @@
+================================================================================
+ARQUITECTURA D'ENTITATS I DISSENY DE CLASSES (MOTOR ANTIFRAU)
+================================================================================
+Projecte: Motor Antifrau Avançat
+Paquets Principals: Entitats, Processadors, Persistencia, Programa
+
+1. COUPLING & DOMAIN MODEL (Model de Domini)
+--------------------------------------------------------------------------------
+- Transaccio: Classe immutable que representa un intent de pagament. 
+  Conté attributes fonamentals: import (double), paisOrigen (String) i tipus (Enum).
+- TipusTransaccio: 'Enum' que encapsula els tipus de pagaments permesos pel 
+  sistema de l'entitat bancària (TARGETA, TRANSFERENCIA, BIZUM, etc.).
+
+2. LÒGICA DE NEGOCI (Business Logic)
+--------------------------------------------------------------------------------
+- ReglaFrau<T>: Interfície funcional basada en Predicate<T>. Permet instanciar 
+  regles de frau altament dinàmiques mitjançant expressions Lambda (Ex: import 
+  superior a 10.000€ o països considerats paradisos fiscals).
+- MotorAntifrau: El cervell encarregat de coordinar el filtratge. Avalua la 
+  llista de transaccions contra totes les regles actives de forma centralitzada.
+
+3. MOTOR DE PROCESSAMENT CONCURRENT (Execution Engine)
+--------------------------------------------------------------------------------
+- ProcessadorBatch: L'orquestrador principal. Implementa el pipeline de dades 
+  complet (Lectura CSV -> Filtratge Motor -> Execució Paral·lela -> Persistència 
+  Batch -> Escriptura de fitxer Log d'alertes).
+- ProcessadorPagament (Interfície): Defineix el contracte per als connectors de 
+  pagament. Cada passarel·la té la seva pròpia implementació concreta.
+- FabricaProcessadors: Classe que implementa el patró Factory associant en un 
+  'Map<TipusTransaccio, ProcessadorPagament>' cada tipus de mètode amb la seva 
+  passarel·la de pagament, evitant ramificacions condicionals complexes.
+
+4. PERSISTÈNCIA D'ALT RENDIMENT (Persistence Layer)
+--------------------------------------------------------------------------------
+- BDSingleton: Implementació del patró Singleton per garantir una única 
+  connexió permanent i eficient cap a la instància MySQL de XAMPP.
+- TransaccioDAO: Objecte d'Accés a Dades que rep la connexió injectada des del 
+  constructor (Inversió de Dependències). Agrupa inserts en paquets de 
+  'PreparedStatement.addBatch()' i els executa en un sol bloc amb control manual 
+  de transaccions (con.commit() / con.rollback()).
+
+================================================================================
+DIAGRAMA DE FLUX CONCEPTUAL:
+CSV -> [Stream] -> MotorAntifrau -> [parallelStream] -> Factory -> DAO (Batch) -> MySQL
+================================================================================

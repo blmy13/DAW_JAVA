@@ -1,0 +1,34 @@
+================================================================================
+RESUM GENERAL DEL PROJECTE: MOTOR ANTIFRAU D'ALT RENDIMENT
+================================================================================
+Desenvolupador: Àlex
+Arquitectura de Programari: Clean Architecture, SOLID Principles, GoF Patterns
+Tecnologies: Java 17, JUnit 5, Mockito, JDBC, MySQL (XAMPP)
+
+1. DESCRIPCIÓ DEL PROJECTE
+--------------------------------------------------------------------------------
+Aquest projecte consisteix en un motor de detecció de frau i processament de 
+pagaments massius d'alta eficiència per a entitats financeres. El sistema llegeix 
+transaccions des d'un fitxer de dades (CSV), les avalua dinàmicament a través d'un 
+conjunt de regles antifrau configurables, processa els pagaments legítims de forma 
+concurrent i els persisteix de manera atòmica a una base de dades relacional.
+
+2. FITES TÈCNIQUES I APRENENTATGES CLAU
+--------------------------------------------------------------------------------
+- DATA PIPELINES FLUIDS: Ús exclusiu de l'API de 'Streams' de Java per llegir, 
+  filtrar i transformar dades en text de manera declarativa i eficient.
+- DECONSTRUCCIÓ DE L'IF/ELSE (POLIMORFISME): Implementació de patrons de disseny 
+  professional (Factory Pattern i Strategy Pattern) utilitzant un registre basat 
+  en mapes de Java per resoldre la lògica de negoci en temps constant O(1).
+- CONCURRÈNCIA NO DETERMINISTA: Ús de 'parallelStream()' per a l'execució asíncrona 
+  i paral·lela dels pagaments, aprofitant al màxim els nuclis del processador.
+- SEGURETAT ATÒMICA (ACID): Disseny d'una capa de persistència avançada amb 
+  lots JDBC (Batch Processing) amb gestió manual de 'commit' i 'rollback' per 
+  evitar la corrupció de dades en insercions massives.
+- ENGINYERIA DE TESTING: Protecció del codi mitjançant tests unitaris aïllats 
+  amb Mockito, aplicant la Inversió de Dependències (Injecció de Dependències) 
+  per simular l'entorn de base de dades sense necessitat de servidors reals.
+
+================================================================================
+ESTAT DE L'APLICACIÓ: COMPILANT, TESTEJAT I OPERATIU EN ENTIRE BUCLE REAL
+================================================================================
